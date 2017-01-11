@@ -25,7 +25,7 @@ function onReady()
 	delete mainWindow.module;
 
 	// If you want to open up dev tools programmatically, call
-	// mainWindow.openDevTools();
+	mainWindow.openDevTools();
 
 	// By default, we'll open the Ember App by directly going to the
 	// file system.
