@@ -10,11 +10,10 @@ IndexRoute = Ember.Route.extend
 
 	model: ->
 
-		data = {}
+		data = null
 
 		return data
 
-	actions:
 
 
 `export default IndexRoute`
