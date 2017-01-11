@@ -16,10 +16,6 @@
 
 	"scripts": 
 	{
-		"run": "ember electron",
-		"deploy": "ember electron:package",
-		"test" : "ember electron:test",
-
 		"build": "ember build",
 		"start": "ember server",
 		"test": "ember test"
@@ -72,7 +68,8 @@
 		"copy-files": 
 		[
 			"electron.js",
-			"package.json"
+			"package.json",
+			"dist/*"
 		],
 		"name": null,
 		"platform": null,
