@@ -39,6 +39,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember electron:build --platform=darwin` (OS X)
 * `ember electron:build --platform=win` (Windows)
 
+
 - [ ] Todo: Add more platforms and options.
 - [ ] Todo: Add program icon.
 
