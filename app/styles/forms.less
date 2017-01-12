@@ -1,0 +1,81 @@
+.svgArrow(@Color)
+{
+	background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" > <g id="info"/> <g id="icons"> <path fill="@{Color}" d="M3.9,18.9V5.1c0-1.6,1.7-2.6,3-1.8l12,6.9c1.4,0.8,1.4,2.9,0,3.7l-12,6.9C5.6,21.5,3.9,20.5,3.9,18.9z" id="play"/> </g> </svg>	');
+}
+
+
+.DefaultTextbox(@FontSize, @Width, @BorderBottom : true, @Arrow : false, @UIColor : 'null')
+{
+	outline: none;
+
+	// - Border
+	& when (@BorderBottom = true)
+	{
+		border: none;
+		border-bottom: 1px solid #BBB;
+	}
+	
+	& when (@BorderBottom = false)
+	{
+		border: none;
+	}
+
+	// - Text positioning
+	padding-left: 5px;
+
+	// - Font and style
+	font-size: @FontSize;
+	font-family: 'avenir';
+	color: #BBB;
+
+	&:focus
+	{
+		& when (@Arrow = true)
+		{
+			.svgArrow('#333');
+		}
+
+		// - Active border
+		& when (@BorderBottom = true)
+		{
+			border-bottom: 1px solid #333;
+		}
+
+		// - Active text
+		color: #333;
+	}
+
+	// - Arrow
+	& when (@Arrow = true) 
+	{
+		// - SVG colored arrow
+		.svgArrow('#BBB');
+
+		background-size: @FontSize / 1.5 @FontSize / 1.5;
+		background-repeat: no-repeat;
+		background-position: 0% 45%;
+
+		padding-left: @FontSize !important;
+	}
+
+	// - Error style
+	& when (iscolor(@UIColor)) 
+	{
+		& when (@Arrow = true)
+		{
+			.svgArrow('@{UIColor}') !important;
+		}
+
+		// - Active border
+		& when (@BorderBottom = true)
+		{
+			border-bottom: 1px solid @UIColor !important;
+		}
+	}
+}
+
+.DefaultCheckbox()
+{
+
+
+}

@@ -2,7 +2,22 @@
 	STYLE ENTRY POINT - DEFINES ALL GLOBAL STYLES AND INGLUDES SPECIFIC STYLES
 */
 
+@import 'fonts';
+@import 'forms';
+
 body
 {
+	// - Colors
 	background-color: #FFFFFF;
+
+	// - Positing
+	padding: 0px;
+
+	// - Default font
+	font-family: avenir;
+}
+
+input[type=text]
+{
+	.DefaultTextbox(20px, 200px, false, true)
 }
