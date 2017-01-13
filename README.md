@@ -1,4 +1,4 @@
-# sketch-it
+# Sketch-it [![Build Status](https://travis-ci.org/AndreaDemontis/Sketch-it.svg?branch=master)](https://travis-ci.org/AndreaDemontis/Sketch-it)
 
 This application is developed using emberjs and electron, for more informations see the Packages section.
 
