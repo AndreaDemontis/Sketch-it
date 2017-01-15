@@ -1,0 +1,13 @@
+<div>
+
+	{{#if disabled}}
+		{{input type="range" name=name value=currentValue min=min max=max disabled=true}}
+	{{else}}
+		{{input type="range" name=name value=currentValue min=min max=max disabled=false}}
+	{{/if}}
+	
+	{{#if haveText}}
+		<p>{{label}} <span>{{currentValue}}</span></p>
+	{{/if}}
+
+</div>

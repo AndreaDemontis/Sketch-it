@@ -1,0 +1,7 @@
+{{#if disabled}}
+	<input type="radio" id={{getId}} checked="{{checked}}" name="{{name}}" value="{{value}}" disabled />
+{{else}}
+	<input type="radio" id={{getId}} checked="{{checked}}" name="{{name}}" value="{{value}}" />
+{{/if}}
+
+<label for={{getId}}>{{label}}</label>
