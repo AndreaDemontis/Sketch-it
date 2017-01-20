@@ -4,6 +4,8 @@
 
 @import 'fonts';
 @import 'forms';
+@import 'flags';
+@import 'topbar';
 
 body
 {
@@ -12,32 +14,16 @@ body
 
 	// - Positing
 	padding: 0px;
+	margin: 0px;
+
+	width: 100%;
 
 	// - Default font
 	font-family: avenir;
-}
 
-textbox
-{
-	.DefaultTextbox(20px, 200px, true, true)
-}
-
-checkbox
-{
-	.DefaultCheckbox(15px);
-}
-
-.apple
-{
-	.AppleCheckbox(15px) !important;
-}
-
-radiobutton
-{
-	.DefaultRadiobutton(15px);
-}
-
-slider
-{
-	.DefaultSlider(200px);
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }

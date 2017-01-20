@@ -1,0 +1,9 @@
+{{#if disabled}}
+	<button {{action 'click'}} disabled>
+		<span>{{text}}</span>
+	</button>
+{{else}}
+	<button {{action 'click'}}>
+		<span>{{text}}</span>
+	</button>
+{{/if}}

@@ -1,0 +1,7 @@
+<span class="title" style={{{if content.selected 'font-weight: 600;' ''}}}>
+	<span style="float: left; margin-right: 5px; vertical-align: middle;">{{{content.html}}}</span>
+	{{{content.name}}}
+</span>
+{{#if hasDescription}}
+	<div class="description">{{{content.description}}}</div>
+{{/if}}

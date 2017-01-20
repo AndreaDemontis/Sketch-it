@@ -20,7 +20,7 @@ function onWindowAllClosed()
 
 function onReady() 
 {
-	mainWindow = new BrowserWindow({ width: 800, height: 600 });
+	mainWindow = new BrowserWindow({ width: 800, height: 600, frame: false });
 
 	delete mainWindow.module;
 

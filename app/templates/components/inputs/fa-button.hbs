@@ -1,0 +1,11 @@
+{{#if disabled}}
+	<button {{action 'click'}} class="{{class}}" disabled>
+		<i class="fa {{icon}}"></i> 
+		{{label}}
+	</button>
+{{else}}
+	<button {{action 'click'}} class="{{class}}">
+		<i class="fa {{icon}}"></i> 
+		{{label}}
+	</button>
+{{/if}}

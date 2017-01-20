@@ -1,0 +1,21 @@
+{{#click-outside action=(action "outClick")}}
+<div>
+	<button {{action 'toggleMenu'}}>
+		{{{currentSelected.html}}}	
+		{{{currentSelected.name}}}
+	</button>
+
+	<div class="optionsMenu">
+		{{#if search}}
+			<div class="searchbox">
+				{{input type="text" placeholder="Search..." valueBinding="searchValue"}}
+			</div>
+		{{/if}}
+		<ul>
+			{{#each items as |item|}}
+				{{inputs/select-item content=item action="selected"}}
+			{{/each}}
+		</ul>
+	</div>
+</div>
+{{/click-outside}}

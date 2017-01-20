@@ -1,0 +1,105 @@
+.nonSelectable()
+{
+	// - Disable select on this element
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+
+	// - Normal cursor
+	cursor: default;
+}
+
+.topbar
+{
+	// - Draggable area
+	-webkit-app-region: drag;
+
+	// - Layout
+	display: table;
+	width: 100%;
+	height: 40px;
+
+	// - Reset margins
+	margin: 0px;
+	padding: 0px;
+
+	background-color: transparent;
+
+	div
+	{
+		// - Row style
+		height: 100%;
+		display: table-row;
+
+		div
+		{
+			// - Column style
+			padding: 5px;
+		}
+	}
+
+	.left
+	{
+		// - Left part layout
+		display: table-cell;
+		text-align: left;
+		width: 33.3%;
+
+		fa-button
+		{
+			-webkit-app-region: no-drag;
+			
+			.FontAwesomeButton(20px, #999, #222, #555, #CCC, #222, 18px);
+		}
+	}
+
+	.center
+	{
+		// - Center part layout
+		display: table-cell;
+		text-align: center;
+		width: 33.3%;
+
+		vertical-align: bottom;
+
+		.nonSelectable();
+
+		.logo
+		{
+			color: #444;
+
+			font-weight: 600;
+			font-size: 28px;
+
+			span
+			{
+				color: #3ADBD3;
+			}
+		}
+	}
+
+	.right
+	{
+		// - Right part layout
+		display: table-cell;
+		text-align: right;
+		width: 33.3%;
+
+		// - Window button styles
+		fa-button
+		{
+			-webkit-app-region: no-drag;
+
+			.FontAwesomeButton(20px);
+		}
+
+		.close
+		{
+			.FontAwesomeButton(23px);
+		}
+
+	}
+}
+

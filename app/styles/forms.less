@@ -4,10 +4,29 @@
 	background-repeat: no-repeat;
 }
 
+.svgSearch(@Color)
+{
+	background-image: url("data:image/svg+xml;utf8,<?xml version='	1.0'	 ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background='	new 0 0 139 139'	 height='	139px'	 id='	Find'	 version='	1.1'	 viewBox='	0 0 139 139'	 width='	139px'	 xml:space='	preserve'	 xmlns='	http://www.w3.org/2000/svg'	 xmlns:xlink='	http://www.w3.org/1999/xlink'	><path fill='	@{Color}'	 d='	M127.558,111.961L100.249,84.65c4.64-7.387,7.333-16.118,7.333-25.488c0-26.509-21.49-47.996-47.998-47.996  c-26.508,0-47.996,21.487-47.996,47.996c0,26.51,21.487,47.995,47.996,47.995c10.197,0,19.642-3.188,27.414-8.605l26.984,26.986  c1.875,1.873,4.333,2.806,6.788,2.806c2.458,0,4.913-0.933,6.791-2.806C131.308,121.787,131.308,115.711,127.558,111.961z   M59.584,91.607c-17.917,0-32.443-14.525-32.443-32.443S41.667,26.72,59.584,26.72c17.918,0,32.443,14.526,32.443,32.444  S77.502,91.607,59.584,91.607z'	/></svg>");
+	background-repeat: no-repeat;
+}
+
 .svgDownArrow(@Color)
 {
 	.svgArrow(@Color);
 	transform: rotate(90deg);
+}
+
+.nonSelectable()
+{
+	// - Disable select on this element
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+
+	// - Normal cursor
+	cursor: default;
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -315,6 +334,10 @@
 			font-size: 14px;
 			color: #999;
 
+			.nonSelectable();
+
+			text-align: left;
+
 			// Label position
 			margin: 0px;
 
@@ -327,6 +350,426 @@
 	}
 }
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+//
+//		Default button mixin style
+//
+//	Parameters:
+//
+//	@Size 			[px]    : Button font size in pixels
+//	@IconColor 		[Color] : Button color (optional)
+//
+.DefaultButton(@Size, @Color : #999)
+{
+	button
+	{
+		// - Line animation
+		-webkit-transition: all 300ms 0s ease-in-out;
+		transition: all 300ms 0s ease-in-out;
+
+		// - Reset button style
+		border: none;
+		background: transparent;
+		outline: none;
+
+		// - Cursor for buttons
+		cursor: pointer !important;
+
+		// - Text settings
+		color: #444;
+		font-size: @Size;
+
+		// - Bottom line
+		border-bottom: 1px solid #CCC;
+
+		// - Hide arrow overflow
+		overflow: hidden;
+
+		.nonSelectable();
+
+		span
+		{
+			// - Text padding
+			padding-left: 3px !important;
+		}
+	}
+
+	button:before
+	{
+		// - To set empty
+		content: "";
+
+		.svgArrow(@Color);
+
+		// - Arrow animation transition type
+		-webkit-transition: all 300ms 0s ease-in-out;
+		transition: all 300ms 0s ease-in-out;
+
+		// - Arrow settings
+		background-size: @Size / 1.5 @Size / 1.5;
+		background-repeat: no-repeat;
+		background-position: 0% 50%;
+
+		// - Arrow size
+		height: @Size / 1.5;
+		width: @Size / 1.5;
+
+		// - Adjust style
+		display: inline-block;
+		margin: 0px;
+	}
+
+	button:hover:before
+	{
+		// - Arrow animation
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+
+	button:active:before
+	{
+		// - Arrow animation
+		-webkit-transform: translate(0px, 100px);
+		transform: translate(0px, 100px);
+	}
+
+	button:disabled
+	{
+		color: #CCC !important;
+
+		cursor: default !important;
+	}
+
+	button:disabled:before
+	{
+		.svgArrow(#CCC);
+
+		// - Arrow animation clear
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transform: translate(0px, 0px);
+		transform: translate(0px, 0px);
+	}
+}
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+//
+//		Font awesome button mixin style
+//
+//	Parameters:
+//
+//	@Size 			[px]    : Button size in pixels
+//	@IconColor 		[Color] : Button color (optional)
+//	@ActiveColor	[Color] : Button color during press action (optional)
+//	@HoverColor 	[Color] : Button color in hover status (optional)
+//	@DisabledColor 	[Color] : Button color disabled (optional)
+//	@TextColor 		[Color] : Label color (optional)
+//	@TextSize 		[px]    : Button label size in pixels (optional)
+//
+.FontAwesomeButton(@Size, @IconColor : #999, @ActiveColor : #222, @HoverColor : #555, @DisabledColor : #CCC, @TextColor : #222, @TextSize : @Size)
+{
+	button
+	{
+		// - Reset button style
+		border: none;
+		background: transparent;
+		outline: none;
+
+		// - Cursor for buttons
+		cursor: pointer !important;
+
+		i
+		{
+			// - Icon
+			font-size: @Size !important;
+			color: @IconColor !important;
+
+			margin-right: 5px;
+		}
+
+		// - Label font
+		color: @TextColor;
+		font-size: @TextSize;
+
+		// - Icon align
+		vertical-align: middle;
+
+		.nonSelectable();
+	}
+
+	button:hover
+	{
+		i
+		{
+			color: @HoverColor !important;
+		}
+	}
+
+	button:active
+	{
+		i
+		{
+			color: @ActiveColor !important;
+		}
+	}
+
+	button:disabled
+	{
+		i
+		{
+			color: @DisabledColor !important;
+		}
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+//
+//		Select mixin style
+//
+//	Parameters:
+//
+//	@Width 			[px]    : Box width
+//	@MaxHeight 		[px]    : List max height
+//	@FontSize 		[px]    : All text font size
+//
+.SelectQuery(@Width, @MaxHeight, @FontSize : 15px)
+{
+	div
+	{
+		// - Positioning for content
+		position: relative;
+		text-align: left;
+
+		width: @Width;
+
+		button
+		{
+			// - Border
+			border: none;
+			border-bottom: 1px solid #AAA;
+			outline: none;
+
+			// - Background
+			background: transparent;
+
+			// - Font
+			font-size: @FontSize;
+			color: #444;
+			text-align: left;
+
+			// - Size
+			width: @Width;
+
+			// - Pointer
+			cursor: pointer;
+
+			&:hover
+			{
+				// - Border
+				border-bottom: 1px solid #444;
+			}
+
+			&:after
+			{
+				// - Arrow animation transition type
+				-webkit-transition: all 300ms 0s ease-in-out;
+				transition: all 300ms 0s ease-in-out;
+
+				// - Symbol
+				content: '\F078';
+
+				// - Set symbol font
+				font-family: fontAwesome;
+				font-size: @FontSize / 1.2;
+				color: #888;
+
+				// - Positioning
+				margin-left: 5px;
+				margin-top: 3px;
+				display: inline-block;
+				float: right;
+			}
+
+			&:hover:after
+			{
+				// - Color change
+				color: #333;
+
+				// - Arrow animation
+				-webkit-transform: rotate(90deg);
+				transform: rotate(90deg);
+			}
+		}
+
+		.optionsMenu
+		{
+			// - Border
+			border: 1px solid #CCC;
+			border-radius: 5px;
+
+			width: @Width;
+
+			// - Positioning
+			position: absolute;
+			top: @FontSize + 15;
+			left: 0px;
+			z-index: 10000;
+
+			// - State
+			background: #FFF;
+			display: none;
+
+			// - Positioning
+			text-align: left;
+
+			.searchbox
+			{
+				// - Box style
+				border-bottom: 1px solid #CCC;
+				background-color: #FFF;
+
+				// - Overlay
+				z-index: 100000;
+
+				// - Custom positioning
+				padding-top: 5px;
+				padding-bottom: 5px;
+
+				// - Size
+				height: 20px;
+
+				input
+				{
+					// - Reset style
+					outline: none;
+					background: transparent;
+					border: none;
+
+					// - Font style
+					font-size: 16px;
+					color: #555;
+
+					// - Positioning
+					padding-left: 23px;
+					margin-left: 10px;
+
+					// - Background (lens)
+					.svgSearch(#555);
+					background-size: 17px 17px;
+					background-repeat: no-repeat;
+					background-position: 0% 50%;
+				}
+			}
+
+			ul
+			{
+				// - Reset positioning
+				padding: 0px;
+				margin: 0px;
+
+				// - List height
+				overflow-y: scroll;
+				max-height: @MaxHeight;
+
+				li
+				{
+					// - Reset style
+					list-style: none;
+
+					// - Custom positioning
+					margin-left: 10px;
+					margin-right: 10px;
+					padding-top: 7px;
+					padding-bottom: 4px;
+
+					// - Borders and style
+					border-bottom: 1px solid #DDD;
+					color: #555;
+
+					&:last-child
+					{
+						border: none !important;
+					}
+
+					&:hover
+					{
+						color: #999;
+
+						cursor: pointer;
+					}
+
+					.title
+					{
+
+					}
+
+					.description
+					{
+						font-size: @FontSize / 1.5;
+						color: #888;
+
+						margin-top: -3px;
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+selectquery
+{
+	.SelectQuery(150px, 200px);
+}
+
+textbox
+{
+	.DefaultTextbox(20px, 200px, true, true)
+}
+
+checkbox
+{
+	.DefaultCheckbox(15px);
+}
+
+.apple
+{
+	.AppleCheckbox(15px) !important;
+}
+
+radiobutton
+{
+	.DefaultRadiobutton(15px);
+}
+
+slider
+{
+	.DefaultSlider(200px);
+}
+
+fa-button
+{
+	.FontAwesomeButton(30px);
+}
+
+default-button
+{
+	.DefaultButton(20px, #3ADBD3);
+}
 
 
 
