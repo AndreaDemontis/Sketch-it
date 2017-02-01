@@ -6,6 +6,19 @@
 @import 'forms';
 @import 'flags';
 @import 'topbar';
+@import 'balloon';
+@import 'scrollbar';
+
+// - Routes
+@import 'login';
+@import 'register';
+@import 'lobby';
+@import 'chat';
+
+html
+{
+	height: 100%;
+}
 
 body
 {
@@ -17,6 +30,10 @@ body
 	margin: 0px;
 
 	width: 100%;
+	height: 100%;
+
+	// - Overflow
+	overflow: hidden;
 
 	// - Default font
 	font-family: avenir;
@@ -26,4 +43,20 @@ body
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+
+body > div
+{
+	height: 100%;
+}
+
+.fadeClass
+{
+	height: 100%;
+
+	.fadeBody
+	{
+		height: 100%;
+	}
 }

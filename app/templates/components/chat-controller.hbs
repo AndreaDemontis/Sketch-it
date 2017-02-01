@@ -1,0 +1,10 @@
+<ul class="chatContent">
+	{{#each messages as |message|}}
+		<li class="message">
+			<span class="{{if message.system 'system' ''}}">
+				<span class="user">{{message.user}}</span> <span class="content">{{message.content}}</span>
+			</span>
+		</li>
+	{{/each}}
+</ul>
+{{inputs/default-textbox placeholder="Type here..." currValue=message onEnter="sendMessage"}}

@@ -47,9 +47,12 @@
 //
 .DefaultTextbox(@FontSize, @Width, @BorderBottom : true, @Arrow : false, @UIColor : 'null')
 {
-	input[type="text"]
+	input[type="text"],
+	input[type="password"]
 	{
 		outline: none;
+
+		width: @Width;
 
 		// - Border
 		& when (@BorderBottom = true)
@@ -78,6 +81,12 @@
 				.svgArrow('#333');
 			}
 
+			& when (@Arrow = false) 
+			{
+				background: transparent;
+			}
+
+
 			// - Active border
 			& when (@BorderBottom = true)
 			{
@@ -101,12 +110,22 @@
 			padding-left: @FontSize !important;
 		}
 
+		& when (@Arrow = false) 
+		{
+			background: transparent;
+		}
+
 		// - Error style
 		& when (iscolor(@UIColor)) 
 		{
 			& when (@Arrow = true)
 			{
 				.svgArrow('@{UIColor}') !important;
+			}
+
+			& when (@Arrow = false) 
+			{
+				background: transparent;
 			}
 
 			// - Active border
@@ -558,6 +577,7 @@
 		button
 		{
 			// - Border
+			padding-bottom: 3px;
 			border: none;
 			border-bottom: 1px solid #AAA;
 			outline: none;
@@ -682,6 +702,7 @@
 
 				// - List height
 				overflow-y: scroll;
+				overflow-x: hidden;
 				max-height: @MaxHeight;
 
 				li
@@ -733,12 +754,12 @@
 
 selectquery
 {
-	.SelectQuery(150px, 200px);
+	.SelectQuery(200px, 200px);
 }
 
 textbox
 {
-	.DefaultTextbox(20px, 200px, true, true)
+	.DefaultTextbox(20px, 200px, true, true);
 }
 
 checkbox

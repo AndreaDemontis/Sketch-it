@@ -11,6 +11,11 @@
 	cursor: default;
 }
 
+.topbar-border
+{
+	border-bottom: 3px solid #777;
+}
+
 .topbar
 {
 	// - Draggable area
@@ -46,12 +51,16 @@
 		display: table-cell;
 		text-align: left;
 		width: 33.3%;
+		vertical-align: middle;
+
+		font-size: 20px;
+		font-weight: 600;
 
 		fa-button
 		{
 			-webkit-app-region: no-drag;
 			
-			.FontAwesomeButton(20px, #999, #222, #555, #CCC, #222, 18px);
+			.FontAwesomeButton(25px, #999, #222, #555, #CCC, #222, 18px);
 		}
 	}
 
@@ -86,6 +95,7 @@
 		display: table-cell;
 		text-align: right;
 		width: 33.3%;
+		vertical-align: middle;
 
 		// - Window button styles
 		fa-button

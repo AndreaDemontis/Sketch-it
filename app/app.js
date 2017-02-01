@@ -13,8 +13,6 @@ App = Ember.Application.extend({
   Resolver
 });
 
-Ember.warn = function(i){};
-
 loadInitializers(App, config.modulePrefix);
 
 export default App;

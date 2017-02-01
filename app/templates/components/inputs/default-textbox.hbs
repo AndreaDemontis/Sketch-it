@@ -1,5 +1,13 @@
-{{#if disabled}}
-	<input type="text" placeholder="{{placeholder}}" name="{{name}}" disabled />
+{{#if password}}
+	{{#if disabled}}
+		{{input type="password" placeholder=placeholder value=currValue key-up="change" enter="enter" disabled=true }}
+	{{else}}
+		{{input type="password" placeholder=placeholder value=currValue key-up="change" enter="enter" }}
+	{{/if}}
 {{else}}
-	<input type="text" placeholder="{{placeholder}}" name="{{name}}" />
+	{{#if disabled}}
+		{{input type="text" placeholder=placeholder value=currValue key-up="change" disabled=true enter="enter" }}
+	{{else}}
+		{{input type="text" placeholder=placeholder value=currValue key-up="change" enter="enter" }}
+	{{/if}}
 {{/if}}

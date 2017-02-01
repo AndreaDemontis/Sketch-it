@@ -1,0 +1,64 @@
+
+.chatController
+{
+	height: 100%;
+
+	.chatContent
+	{
+		height: calc(~"100% - 30px");
+
+		vertical-align: bottom;
+
+		padding: 0px;
+		margin: 0px;
+
+		overflow-y: scroll;
+
+		.message
+		{
+			margin-left: 10px;
+			margin-top: 4px;
+			margin-bottom: 4px;
+
+			list-style: none;
+
+			user-select: text;
+			-moz-user-select: text;
+			-khtml-user-select: text;
+			-webkit-user-select: text;
+			-o-user-select: text;
+			
+
+			.system
+			{
+				//border: 2px dashed #4CA3A3;
+				border-radius: 5px;
+
+				padding-right: 5px;
+				padding-left: 5px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+
+				font-size: 14px;
+
+				background-color: #90D1D1;
+				color: #3F5B5B;
+
+				font-weight: bolder;
+			}
+
+			.user
+			{
+				font-weight: bolder;
+				color: #666;
+			}
+		}
+
+	}
+
+	textbox
+	{
+		margin-left: 10px;
+		.DefaultTextbox(20px, 240px, false, true);
+	}
+}

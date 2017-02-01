@@ -1,44 +1,30 @@
-{{top-bar}}
+{{top-bar showTitle=false}}
 
-<div align="center">
+{{#animations/fade-slide}}
+<div class="login" align="center">
 
-	<br>
+	<span class="logo">Sketch<span>it</span></span>
 
-	{{inputs/default-select action="mamma" data=model.oggetti}}
+	<div class="content">
 
-	<br><br>
+		<div class="guest" data-balloon="Login as guest&#10;(not avaiable)" data-balloon-pos="up" data-balloon-break>
+			{{inputs/fa-button icon="fa-user-circle"}}
+		</div>
 
-	{{inputs/default-textbox name="username" placeholder="username"}}
+		<div class="form">
+			{{inputs/default-textbox placeholder="Username" currValue=model.username onEnter="login"}}
+			<br><br>
+			{{inputs/default-textbox placeholder="Password" password=true currValue=model.password onEnter="login"}}
+			<br><br><br>
+			{{inputs/default-button text="Register" action="register"}}
+			{{inputs/default-button text="Login" action="login"}}
+		</div>
 
-	<br><br><br>
+		<div class="error">
+			Test
+		</div>
 
-	{{inputs/default-checkbox checked=false name="vitabella" label="Che bella la vita"}} <br>
-	{{inputs/default-checkbox checked=true name="vitabrutta" label="Che brutta la vita"}} <br>
-
-	<br>
-
-	{{inputs/default-checkbox checked=true class="apple" name="applefaggot" label="Apple faggot"}} <br>
-
-	<br>
-
-	{{inputs/default-radiobutton checked="true" name="mollusco" value="colorato" label="Mollusco colorato"}} <br>
-	{{inputs/default-radiobutton name="mollusco" value="grigi" label="Mollusco in scala di grigi"}} <br>
-	{{inputs/default-radiobutton name="mollusco" value="arcobaleno" label="Mollusco arcobaleno"}} <br>
-
-	<br>
-
-	{{inputs/default-slider min="5" max="80" label="Brush size:"}}
-
-	<br>
-
-	{{inputs/default-button text="Alito puzzolente" disabled=true}}
-
-	<br><br>
-
-	{{inputs/default-button text="Mastica cingomme"}}
-
-	<br><br>
-
-	{{inputs/fa-button icon="fa-sign-language"}}
+	</div>
 
 </div>
+{{/animations/fade-slide}}

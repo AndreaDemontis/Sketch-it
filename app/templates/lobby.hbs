@@ -1,0 +1,23 @@
+{{top-bar topbarBorder=true userLogged=true}}
+
+
+{{#animations/fade-slide}}
+<div class="lobby">
+
+	<div class="roomList">
+
+	{{room-list-new}}
+	
+	{{#each model.rooms as |item|}}	
+		{{room-list-entry data=item}}
+	{{/each}}
+		
+
+	</div>
+
+	<div class="chat">
+		{{chat-controller messages=model.messages}}
+	</div>
+
+</div>
+{{/animations/fade-slide}}

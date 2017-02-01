@@ -1,0 +1,197 @@
+div > .lobby
+{
+	height: calc(~"100% - 47px");
+
+	.roomList
+	{
+		width: 64%;
+		height: 100%;
+
+		float: left;
+
+		overflow-y: scroll;
+	}
+
+	.chat
+	{
+		width: 35%;
+		height: 100%;
+
+		float: right;
+
+		border-left: 1px solid #999;
+	}
+
+}
+
+.roomListEntry > table
+{
+	border-bottom: 1px solid #DDD;
+	height: 20px;
+	font-size: 17px;
+	padding: 5px;
+	width: 100%;
+
+	cursor: poiner;
+
+	.name
+	{
+		font-weight: 600;
+		width: 50%;
+		text-align: left;
+		font-stretch: condensed;
+
+		span
+		{
+			margin-right: 5px;
+		}
+	}
+
+	.users
+	{
+		width: auto;
+	}
+
+	.join
+	{
+		fa-button
+		{
+			.FontAwesomeButton(20px);
+		}
+	}
+
+	.expanded
+	{
+		text-align: left;
+		padding-top: 0px;
+
+		display: none;
+
+		.info
+		{
+			font-size: 13px;
+			font-stretch: none;
+			font-weight: normal;
+			color: #999;
+		}
+
+		.description
+		{
+			width: 50%;
+
+			span
+			{
+				font-size: 15px;
+				font-stretch: none;
+				font-weight: normal;
+				color: #444;
+			}
+
+		}
+
+		.userlist
+		{
+			border-left: 1px solid #EEE;
+			padding-left: 15px;
+
+			width: 50%;
+
+			table
+			{
+				margin: 0px;
+				margin-top: 5px;
+				padding: 0px;
+
+				width: 100%;
+
+				tr th
+				{
+					font-size: 15px;
+					font-stretch: none;
+					font-weight: normal;
+					color: #444;
+					border-bottom: 1px dashed #DDD;
+				}
+
+				tr
+				{
+					padding: 5px;
+				}
+			}
+		}
+	}
+}
+
+.roomListEntryNew > table
+{
+	border-bottom: 1px solid #DDD;
+	height: 20px;
+	font-size: 17px;
+	padding: 5px;
+	width: 100%;
+
+	.name
+	{
+		font-weight: 600;
+		width: 50%;
+		text-align: left;
+		font-stretch: condensed;
+
+		i
+		{
+			font-size: 25px;
+		}
+
+		span
+		{
+			vertical-align: 10%;
+			margin-left: 5px;
+		}
+	}
+
+	.expanded
+	{
+		text-align: left;
+		padding-top: 0px;
+
+		display: none;
+
+		.roomName > textbox
+		{
+			.DefaultTextbox(20px, 200px, true, true);
+		}
+
+		.roomPassword > textbox
+		{
+			.DefaultTextbox(13px, 100px, true, true);
+		}
+
+		.roomDescription
+		{
+			margin-top: 10px;
+
+			textarea
+			{
+				resize: none;
+				outline: none;
+				padding: 5px;
+
+				border-radius: 5px;
+
+				width: 250px;
+				height: 100px;
+			}
+		}
+
+		.options
+		{
+			border-left: 1px solid #EEE;
+
+			vertical-align: top;
+
+			padding-left: 10px;
+		}
+
+
+	}
+}
