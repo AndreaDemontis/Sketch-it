@@ -20,7 +20,21 @@ function onWindowAllClosed()
 
 function onReady() 
 {
-	mainWindow = new BrowserWindow({ minWidth: 950, minHeight: 600, frame: false });
+	var windowSettings =
+	{
+		// - Size
+		width: 1150,
+		height: 720,
+		minWidth: 1150, 
+		minHeight: 720, 
+		maxWidth: 1150, 
+		maxHeight: 720, 
+
+		// - Frame
+		frame: false
+	};
+
+	mainWindow = new BrowserWindow(windowSettings);
 
 	delete mainWindow.module;
 

@@ -1,0 +1,87 @@
+
+.drawArea
+{
+	.tools
+	{
+		display: inline-block;
+
+		vertical-align: top;
+
+		width: 80px;
+
+		slider
+		{
+			transform: rotate(90deg);
+			display: block;
+
+			width: 55px;
+
+			margin-left: 35px;
+			margin-top: 40px;
+
+			.DefaultSlider(150px);
+		}
+
+		ul
+		{
+			border-right: 1px solid #DDD;
+
+			margin-bottom: 10px;
+
+			li
+			{
+				transition: all 0.1s ease;
+
+				border-right: 0px solid #DDD;
+
+				list-style: none;
+
+				font-size: 24px;
+
+				text-align: center;
+
+				padding: 5px;
+				padding-right: 10px;
+
+				box-sizing:border-box;
+
+				&:hover
+				{
+					border-right: 3px solid #DDD;
+
+					cursor: pointer;
+				}
+
+				&.selected
+				{
+					border-right: 3px solid rgb(58, 219, 211);
+				}
+
+			}
+		}
+	}
+
+	.drawableArea
+	{
+		display: inline-block;
+
+		height: 620px;
+		width: 520px;
+
+		table
+		{
+			width: 100%;
+			height: 100%;
+
+			padding: 30px;
+
+			tr.emp { height: 10px; }
+			th.min { width: 10px; }
+
+			.content
+			{
+				cursor: crosshair;
+			}
+		}
+	}
+}

@@ -5,6 +5,8 @@ import ENV from '../config/environment';
 export default Ember.Route.extend(
 {
 
+	server: Ember.inject.service('server'),
+
 	Data:
 	{
 		supportedLanguages: ENV.APP.supportedLanguages,
@@ -39,17 +41,60 @@ export default Ember.Route.extend(
 
 		confirm: function () 
 		{
-			Ember.$(".register").fadeOut(100).after(function () 
-			{
-				Ember.$(".registerCompleted").fadeIn(500);
-			});
+			var server = this.get('server');
 
 			var that = this;
 
-			setTimeout(function () 
+			server.connect();
+
+			server.on('connect', function () 
 			{
-				that.transitionTo('index');
-			}, 3000);
+				var data = 
+				{
+					command: 'Authentication/Register',
+					parameters:
+					{
+						Username: that.get('Data.username'),
+						Password: that.get('Data.password'),
+						Email: that.get('Data.email'),
+						Language: that.get('Data.supportedLanguages').find(function (elem) 
+							{
+								return elem.selected;
+							})
+					}
+				};
+
+				server.send(JSON.stringify(data));
+			});
+
+			server.on('message', function (data) 
+			{
+				var response = JSON.parse(data);
+
+				if (response.command === "Authentication/Register")
+				{
+					if (response.parameters.response === true)
+					{
+						Ember.$(".register").fadeOut(100).after(function () 
+						{
+							Ember.$(".registerCompleted").fadeIn(500);
+						});
+
+						setTimeout(function () 
+						{
+							that.transitionTo('index');
+						}, 3000);
+					}
+					else
+					{
+						// - Handle error
+					}
+
+					server.disconnect();
+				}
+			});
+
+			
 		},
 
 		mailCheck: function (email) 

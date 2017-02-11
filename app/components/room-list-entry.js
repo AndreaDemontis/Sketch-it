@@ -15,7 +15,7 @@ export default Ember.Component.extend(
 	{
 		var that = this;
 
-		this.$("#row").click(function () 
+		this.$(".name, .users, .round").click(function () 
 		{
 			that.send("click");
 		});
@@ -44,6 +44,11 @@ export default Ember.Component.extend(
 	
 			this.set('open', !this.get('open'));
 		},
+
+		join: function () 
+		{
+			this.sendAction('action', this.get('data'));
+		}
 	}
 
 });

@@ -1,0 +1,154 @@
+
+.gameplay
+{
+	width: 100%;
+
+	height: calc(~"100% - 47px");
+
+	.right
+	{
+		display: inline-block;
+
+		width: 610px;
+
+		text-align: right;
+
+		confirmButton
+		{
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		.score
+		{
+			float: left;
+		}
+	}
+
+	.left
+	{
+		width: 520px;
+		height: 100%;
+
+		display: inline-block;
+
+		.top
+		{
+			border-bottom: 2px dashed #DDD;
+
+			height: 150px;
+
+			padding: 5px;
+
+			.users
+			{
+				padding-left: 15px;
+
+				display: inline-block;
+
+				width: 230px;
+				height: 150px;
+				overflow-y: scroll;
+
+				table
+				{
+					margin: 0px;
+					margin-top: 5px;
+					padding: 0px;
+
+					width: 100%;
+
+					tr th
+					{
+						font-size: 15px;
+						font-stretch: none;
+						font-weight: normal;
+						color: #444;
+						border-bottom: 1px dashed #DDD;
+
+						text-align: left;
+					}
+
+					tr:last-child th
+					{
+						border-bottom: none;
+					}
+
+					tr
+					{
+						padding: 5px;
+					}
+				}
+			}
+
+			.round
+			{
+				vertical-align: top;
+				width: 250px;
+				padding: 5px;
+
+				.timer
+				{
+					.radialChart { float: left; }
+
+					.info
+					{
+						padding-top: 10px;
+
+						color: #444;
+
+						.roundNumber { font-weight: bolder; margin-left: 14px; }
+						.role { font-weight: bolder; color: #888; font-size: 13px; margin-left: 14px; }
+					}
+					
+					padding-left: 10px;
+					height: 60px;
+
+					line-height: 15px;
+
+					border-bottom: 1px solid #DDD;
+				}
+
+				.word
+				{
+					text-align: center;
+					margin-top: 20px;
+
+					font-weight: bolder;
+					color: #555;
+
+					i
+					{
+						font-size: 23px;
+					}
+
+					.word
+					{
+						color: rgb(150, 0, 0);
+
+						font-size: 23px;
+						font-weight: 700;
+						letter-spacing: 3px;
+					}
+
+				}
+			}
+		}
+
+		.bottom
+		{
+			height: calc(~"100% - 165px");
+
+			.chat
+			{
+				height: 100%;
+			}
+		}
+
+		.round
+		{
+			display: inline-block;
+		}
+	}
+
+}

@@ -142,11 +142,23 @@ div > .lobby
 			font-size: 25px;
 		}
 
-		span
+		& > span
 		{
 			vertical-align: 10%;
 			margin-left: 5px;
 		}
+	}
+
+	.confirm
+	{
+		background-color: #93D339;
+		border-radius: 5px;
+		padding: 4px;
+		width: 90px;
+
+		color: #FFF;
+
+		float: right;
 	}
 
 	.expanded
@@ -190,6 +202,18 @@ div > .lobby
 			vertical-align: top;
 
 			padding-left: 10px;
+
+			font-weight: normal;
+
+			& > .title
+			{
+				font-weight: bolder;
+			}
+
+			.label
+			{
+				font-size: 15px;
+			}
 		}
 
 

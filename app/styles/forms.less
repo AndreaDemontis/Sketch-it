@@ -574,6 +574,9 @@
 
 		width: @Width;
 
+		// - Reset style
+		font-weight: normal;
+
 		button
 		{
 			// - Border
@@ -752,6 +755,179 @@
 }
 
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+//
+//		Default confirm button mixin style
+//
+//	Parameters:
+//
+//	@FontSize 		[px]    : Text font size
+//	@Color  		[Color] : Button background color
+//	@TextColor 		[Color] : Text color
+//
+.DefaultConfirmButton(@FontSize, @Color, @TextColor)
+{
+	button.open
+	{
+		max-width: 500px !important;
+
+		transition: max-width 0.4s ease-in;
+		-ms-transition: max-width 0.4s ease-in;
+		-moz-transition: max-width 0.4s ease-in;
+		-webkit-transition: max-width 0.4s ease-in;
+	}
+
+	button
+	{
+		transition: max-width 0.4s ease-in;
+		-ms-transition: max-width 0.4s ease-in;
+		-moz-transition: max-width 0.4s ease-in;
+		-webkit-transition: max-width 0.4s ease-in;
+
+		// - Reset all styles
+		border: none;
+		outline: none;
+		background: @Color;
+
+		// - Text
+		color: @TextColor;
+		font-size: @FontSize;
+
+		// - Positioning
+		padding-top: 5px;
+		padding-bottom: 3px;
+		padding-left: 9px;
+		padding-right: 8px;
+
+		// - Borders
+		border-radius: 5px;
+
+		// - Oveflow
+		overflow: hidden;
+		max-width: @FontSize * 1.9;
+
+		cursor: pointer;
+
+		&:active
+		{
+			filter: brightness(30%) !important;
+		}
+
+		&:hover
+		{
+			filter: brightness(90%);
+		}
+
+		&:disabled
+		{
+			background-color: #AAA !important;
+		}
+
+		div
+		{
+			display: inline;
+			white-space: nowrap;
+
+			span
+			{
+				margin-left: 10px;
+			}
+
+			i
+			{
+			}
+		}	
+	}
+}
+
+.DefaultNumberbox(@FontSize, @Width)
+{
+	input
+	{
+		// - Reset default styles
+		outline: none;
+		border: none;
+
+		// - Border
+		border-bottom: 1px solid #777;
+
+		// - Font
+		font-size: @FontSize;
+		font-family: avenir;
+
+		// - Size
+		width: @Width
+	}
+
+	input[type=number]::-webkit-inner-spin-button 
+	{ 
+		-webkit-appearance: none;
+		cursor:pointer;
+		display:block;
+		width:8px;
+		color: #333;
+		text-align:center;
+		position:relative;
+	}
+
+	input[type=number]::-webkit-inner-spin-button:before,
+	input[type=number]::-webkit-inner-spin-button:after 
+	{
+		content: "a";
+		position:absolute;
+		right: 0;
+		font-family:monospace;
+	}
+
+	input[type=number]::-webkit-inner-spin-button:before 
+	{
+		top:0px;
+	}
+
+	input[type=number]::-webkit-inner-spin-button:after 
+	{
+		bottom:0px;
+		-webkit-transform: rotate(180deg);
+	}
+}
+
+.defaultColor()
+{
+	input[type="color"]::-webkit-color-swatch-wrapper 
+	{
+		padding: 0px;
+	}
+
+	input[type="color"]::-webkit-color-swatch 
+	{
+		border: none;
+		border-radius: 5px;
+	}
+
+	input
+	{
+		padding: 0px;
+		outline: none;
+		background: transparent;
+
+		box-shadow: 0 0 0 1px #000;
+		border: 1px solid #FFF;
+		border-radius: 5px;
+
+		width: 30px;
+		height: 30px;
+	}
+}
+
+defaultcolor
+{
+	.defaultColor();
+}
+
 selectquery
 {
 	.SelectQuery(200px, 200px);
@@ -792,6 +968,12 @@ default-button
 	.DefaultButton(20px, #3ADBD3);
 }
 
+confirmButton
+{
+	.DefaultConfirmButton(18px, #36BC96, #FFF);
+}
 
-
-
+numberbox
+{
+	.DefaultNumberbox(17px, 50px);
+}

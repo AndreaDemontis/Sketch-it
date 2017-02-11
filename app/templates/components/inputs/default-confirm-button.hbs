@@ -1,0 +1,24 @@
+{{#click-outside action=(action "outClick")}}
+{{#if disabled}}
+<button action="click" disabled>
+
+	<div>
+		<i class="fa {{icon}}" />
+
+		<span>{{label}}</span>
+	</div>
+
+</button>
+{{else}}
+<button action="click" style="background-color: {{color}}">
+
+	<div>
+		<i class="fa {{icon}}" />
+
+		<span>{{label}}</span>
+	</div>
+
+</button>
+{{/if}}
+
+{{/click-outside}}

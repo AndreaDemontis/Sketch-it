@@ -6,10 +6,10 @@
 
 	<div class="roomList">
 
-	{{room-list-new}}
+	{{room-list-new action="openRoom"}}
 	
 	{{#each model.rooms as |item|}}	
-		{{room-list-entry data=item}}
+		{{room-list-entry data=item action="openRoom"}}
 	{{/each}}
 		
 

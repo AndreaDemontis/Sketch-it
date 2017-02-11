@@ -6,7 +6,7 @@ var DefaultSliderComponent = Ember.Component.extend
 	tagName: 'slider',
 
 	// - Slider initial value
-	currentValue: 0,
+	currentValue: 50,
 
 	init: function ()
 	{

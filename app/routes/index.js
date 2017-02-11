@@ -5,6 +5,7 @@ export default Ember.Route.extend
 ({
 
 	appSettings: storageFor('settings'),
+	server: Ember.inject.service('server'),
 
 	Data:
 	{
@@ -37,20 +38,51 @@ export default Ember.Route.extend
 
 		login: function () 
 		{
-			if ("password" === this.get('Data.password') && "username" === this.get('Data.username'))
-			{
-				this.transitionTo('lobby');
-			}
-			else
-			{
-				Ember.$(".login .error").html("Username or password are invalid.");
-				Ember.$(".login .error").fadeIn(500);
+			var server = this.get('server');
 
-				setTimeout(function () 
+			var that = this;
+
+			server.connect();
+
+			server.on('connect', function () 
+			{
+				var data = 
 				{
-					Ember.$(".login .error").fadeOut(500);
-				}, 4000);
-			}
+					command: 'Authentication/Login',
+					parameters:
+					{
+						Username: that.get('Data.username'),
+						Password: that.get('Data.password')
+					}
+				};
+
+				server.send(JSON.stringify(data));
+			});
+
+			server.on('message', function (data) 
+			{
+				var response = JSON.parse(data);
+
+				if (response.command === "Authentication/Login")
+				{
+					if (response.parameters.response === true)
+					{
+						that.transitionTo('lobby');
+					}
+					else
+					{
+						server.disconnect();
+
+						Ember.$(".login .error").html(response.parameters.response);
+						Ember.$(".login .error").fadeIn(500);
+
+						setTimeout(function () 
+						{
+							Ember.$(".login .error").fadeOut(500);
+						}, 4000);
+					}
+				}
+			});
 		}
 	}
 });

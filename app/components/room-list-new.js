@@ -1,10 +1,23 @@
 import Ember from 'ember';
 
+import ENV from '../config/environment';
+
 export default Ember.Component.extend(
 {
 
 	classNames: ['roomListEntryNew'],
 	open: false,
+
+	supportedLanguages: ENV.APP.supportedLanguages,
+
+	// - Data
+	roomName: '',
+	roomPassword: '',
+	roomDescription: '',
+	endlessMode: false,
+	enableAway: false,
+	enableHints: true,
+	language: 'en',
 
 	init: function () 
 	{
@@ -15,11 +28,16 @@ export default Ember.Component.extend(
 	{
 		var that = this;
 
-		this.$("#row").click(function () 
+		this.$(".name").click(function () 
 		{
 			that.send("click");
 		});
 	},
+
+	cantConfirm: Ember.computed('roomName', function () 
+	{
+		return this.get('roomName') === '';
+	}),
 
 	actions:
 	{
@@ -44,6 +62,11 @@ export default Ember.Component.extend(
 	
 			this.set('open', !this.get('open'));
 		},
+
+		create: function () 
+		{
+			this.sendAction();
+		}
 	}
 
 });

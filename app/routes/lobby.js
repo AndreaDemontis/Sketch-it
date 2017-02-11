@@ -54,6 +54,16 @@ export default Ember.Route.extend(
 	model: function () 
 	{
 		return this.get("modelData");
+	},
+
+	actions: 
+	{
+
+		openRoom: function () 
+		{
+			this.transitionTo('gameplay');
+		}
+
 	}
 
 });
