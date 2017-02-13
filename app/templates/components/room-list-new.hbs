@@ -22,10 +22,10 @@
 				{{inputs/default-textbox placeholder="Room name" currValue=roomName}}
 			</div>
 			<div class="roomPassword">
-				{{inputs/default-textbox placeholder="Password"}}
+				{{inputs/default-textbox placeholder="Password" currValue=roomPassword}}
 			</div>
 			<div class="roomDescription">
-				{{textarea placeholder="Room description..."}}
+				{{textarea placeholder="Room description..." currValue=roomDescription}}
 			</div>
 		</th>
 
@@ -33,11 +33,11 @@
 			
 			<span class="title">Options</span><br>
 
-			{{inputs/default-checkbox}} <span class="label">Endless mode</span><br>
-			{{inputs/default-checkbox}} <span class="label">Enable away</span><br>
-			{{inputs/default-checkbox}} <span class="label">Enable hints</span><br>
-			{{inputs/default-numberbox max=100 min=0}} <span class="label">Max players</span><br>
-			{{inputs/default-numberbox max=100 min=0}} <span class="label">Max rounds</span><br>
+			{{inputs/default-checkbox value=endlessMode}} <span class="label">Endless mode</span><br>
+			{{inputs/default-checkbox value=enableAway}} <span class="label">Enable away</span><br>
+			{{inputs/default-checkbox value=enableHints}} <span class="label">Enable hints</span><br>
+			{{inputs/default-numberbox value=maxPlayers max=100 min=0}} <span class="label">Max players</span><br>
+			{{inputs/default-numberbox value=maxRounds max=100 min=0}} <span class="label">Max rounds</span><br>
 			<br>
 			{{inputs/default-select data=supportedLanguages controllerName="language"}}
 

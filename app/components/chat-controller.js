@@ -28,6 +28,7 @@ export default Ember.Component.extend(
 
 		sendMessage: function () 
 		{
+			this.sendAction('action', this.get('message'));
 			this.set('message', '');
 		}
 

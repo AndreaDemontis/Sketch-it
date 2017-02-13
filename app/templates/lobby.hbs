@@ -6,7 +6,7 @@
 
 	<div class="roomList">
 
-	{{room-list-new action="openRoom"}}
+	{{room-list-new action="newRoom"}}
 	
 	{{#each model.rooms as |item|}}	
 		{{room-list-entry data=item action="openRoom"}}
@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="chat">
-		{{chat-controller messages=model.messages}}
+		{{chat-controller messages=model.messages action='sendMessage'}}
 	</div>
 
 </div>
