@@ -1,14 +1,14 @@
 {{#if disabled}}
 	{{#if checked}}
-		<input type="checkbox" id="{{name}}" name="{{name}}" checked disabled />
+		<input type="checkbox" id="{{name}}" name="{{name}}" value=value checked disabled />
 	{{else}}
-		<input type="checkbox" id="{{name}}" name="{{name}}" disabled />
+		<input type="checkbox" id="{{name}}" name="{{name}}" value=value disabled />
 	{{/if}}
 {{else}}
 	{{#if checked}}
-		<input type="checkbox" id="{{name}}" name="{{name}}" checked />
+		<input type="checkbox" id="{{name}}" name="{{name}}" value=value checked />
 	{{else}}
-		<input type="checkbox" id="{{name}}" name="{{name}}" />
+		<input type="checkbox" id="{{name}}" name="{{name}}" value=value />
 	{{/if}}
 {{/if}}
 <label for="{{name}}" >{{label}}</label>

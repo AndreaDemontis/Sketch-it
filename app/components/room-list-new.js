@@ -18,6 +18,8 @@ export default Ember.Component.extend(
 	enableAway: false,
 	enableHints: true,
 	language: 'en',
+	maxPlayers: 4,
+	maxRounds: 7,
 
 	init: function () 
 	{
@@ -65,7 +67,20 @@ export default Ember.Component.extend(
 
 		create: function () 
 		{
-			this.sendAction();
+			var data =
+			{
+				roomName: this.get('roomName'),
+				roomPassword: this.get('roomPassword'),
+				roomDescription: this.get('roomDescription'),
+				endlessMode: this.get('endlessMode'),
+				enableAway: this.get('enableAway'),
+				enableHints: this.get('enableHints'),
+				language: this.get('language'),
+				maxPlayers: this.get('maxPlayers'),
+				maxRounds: this.get('maxRounds')
+			};
+
+			this.sendAction('action', data);
 		}
 	}
 
