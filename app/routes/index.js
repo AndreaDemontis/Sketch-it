@@ -38,8 +38,6 @@ export default Ember.Route.extend
 
 		login: function () 
 		{
-			this.transitionTo('lobby');
-			
 			var server = this.get('server');
 
 			var that = this;
