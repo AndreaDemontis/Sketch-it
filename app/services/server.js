@@ -22,7 +22,7 @@ export default Ember.Service.extend(Ember.Evented,
 
 		var socket = this.get('socket');
 
-		socket.connect(56489, '87.17.65.198', function() 
+		socket.connect(56489, '127.0.0.1', function() 
 		{
 			console.log('Client connected to the server.');
 

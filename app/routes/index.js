@@ -15,7 +15,51 @@ export default Ember.Route.extend
 
 	activate: function ()
 	{
+		var that = this;
 
+		var server = this.get('server');
+
+		window.alert("cane");
+
+		server.on('connect', function () 
+		{
+			var data = 
+			{
+				command: 'Authentication/Login',
+				parameters:
+				{
+					Username: that.get('Data.username'),
+					Password: that.get('Data.password')
+				}
+			};
+
+			server.send(JSON.stringify(data));
+		});
+
+		server.on('message', function (data) 
+		{
+			var response = JSON.parse(data);
+
+			if (response.command === "Authentication/Login")
+			{
+				if (response.parameters.response === true)
+				{
+					that.transitionTo('lobby');
+				}
+				else
+				{
+					server.disconnect();
+
+					Ember.$(".login .error").html(response.parameters.response);
+					Ember.$(".login .error").fadeIn(500);
+
+					setTimeout(function () 
+					{
+						Ember.$(".login .error").fadeOut(500);
+					}, 4000);
+				}
+			}
+		});
 	},
 
 	model: function ()
@@ -42,47 +86,11 @@ export default Ember.Route.extend
 
 			var that = this;
 
-			server.connect();
+			if (server.connected)
+				server.disconnect();
+			else server.connect();
 
-			server.on('connect', function () 
-			{
-				var data = 
-				{
-					command: 'Authentication/Login',
-					parameters:
-					{
-						Username: that.get('Data.username'),
-						Password: that.get('Data.password')
-					}
-				};
-
-				server.send(JSON.stringify(data));
-			});
-
-			server.on('message', function (data) 
-			{
-				var response = JSON.parse(data);
-
-				if (response.command === "Authentication/Login")
-				{
-					if (response.parameters.response === true)
-					{
-						that.transitionTo('lobby');
-					}
-					else
-					{
-						server.disconnect();
-
-						Ember.$(".login .error").html(response.parameters.response);
-						Ember.$(".login .error").fadeIn(500);
-
-						setTimeout(function () 
-						{
-							Ember.$(".login .error").fadeOut(500);
-						}, 4000);
-					}
-				}
-			});
+			
 		}
 	}
 });
