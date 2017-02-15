@@ -47,6 +47,9 @@ export default Ember.Route.extend(
 
 			server.connect();
 
+			server.off('connect');
+			server.off('message');
+
 			server.on('connect', function () 
 			{
 				var data = 

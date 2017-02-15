@@ -1,4 +1,4 @@
-{{top-bar topbarBorder=true userLogged=true}}
+{{top-bar topbarBorder=true userLogged=true userPopup=model.userPopupState}}
 
 
 {{#animations/fade-slide}}
@@ -21,3 +21,5 @@
 
 </div>
 {{/animations/fade-slide}}
+
+{{user-profile visible=model.userPopupState}}

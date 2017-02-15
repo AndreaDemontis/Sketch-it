@@ -18,6 +18,12 @@ var TopBarComponent = Ember.Component.extend
 	showTitle: true,
 	userLogged: false,
 	hasNotifications: true,
+	userPopup: false,
+
+	click: function (event) 
+	{
+		event.stopPropagation();
+	},
 
 	actions:
 	{
@@ -35,6 +41,11 @@ var TopBarComponent = Ember.Component.extend
 		userNotifications: function () 
 		{
 			return;
+		},
+
+		openUserPopup: function () 
+		{
+			this.set('userPopup', !this.get('userPopup'));
 		}
 	}
 });

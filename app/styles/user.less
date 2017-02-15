@@ -1,0 +1,123 @@
+.overlay
+{
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	background: rgba(0, 0, 0, 0.7);
+
+	.popup
+	{
+		position: fixed;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+
+		background: #FFF;
+		border-radius: 5px;
+
+		width: 80%;
+		height: 80%;
+
+		.profile
+		{
+			padding: 10px;
+			padding-left: 30px;
+
+			width: 70%;
+
+			.avatar
+			{
+				display: inline-block;
+
+				font-size: 170px;
+			}
+
+			.description
+			{
+				display: inline-block;
+
+				vertical-align: top;
+
+				margin-top: 20px;
+				margin-left: 30px;
+				width: 400px;
+
+				.username
+				{
+					font-size: 40px;
+
+					font-weight: bolder;
+				}
+
+				.desc
+				{
+					font-size: 19px;
+
+					color: #888;
+
+					margin-top: 20px;
+				}
+			}
+
+			.stats
+			{
+
+				.favSketch
+				{
+					display: inline-block;
+
+					img
+					{
+						border: 2px solid #888;
+
+						border-radius: 5px;
+					}
+				}
+
+				.numbers
+				{
+					display: inline-block;
+					width: 200px;
+
+					font-size: 19px;
+					font-weight: 600;
+					color: #777;
+
+					vertical-align: top;
+
+					padding: 10px;
+
+					.value
+					{
+						float: right;
+						color: #333;
+					}
+
+				}
+			}
+
+			.gallery
+			{
+				vertical-align: bottom;
+
+				height: 300px;
+
+				.images
+				{
+					border-top: 1px solid #BBB;
+
+					overflow-x: scroll;
+
+					width: 600px;
+				}
+
+			}
+		}
+	}
+
+}

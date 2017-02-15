@@ -6,6 +6,7 @@ export default Ember.Route.extend
 
 	appSettings: storageFor('settings'),
 	server: Ember.inject.service('server'),
+	initialized: false,
 
 	Data:
 	{
@@ -19,47 +20,55 @@ export default Ember.Route.extend
 
 		var server = this.get('server');
 
-		window.alert("cane");
+		var initialized = this.get('initialized');
 
-		server.on('connect', function () 
+		if (!initialized)
 		{
-			var data = 
+			server.off('connect');
+			server.off('message');
+			
+			server.on('connect', function () 
 			{
-				command: 'Authentication/Login',
-				parameters:
+				var data = 
 				{
-					Username: that.get('Data.username'),
-					Password: that.get('Data.password')
-				}
-			};
-
-			server.send(JSON.stringify(data));
-		});
-
-		server.on('message', function (data) 
-		{
-			var response = JSON.parse(data);
-
-			if (response.command === "Authentication/Login")
-			{
-				if (response.parameters.response === true)
-				{
-					that.transitionTo('lobby');
-				}
-				else
-				{
-					server.disconnect();
-
-					Ember.$(".login .error").html(response.parameters.response);
-					Ember.$(".login .error").fadeIn(500);
-
-					setTimeout(function () 
+					command: 'Authentication/Login',
+					parameters:
 					{
-						Ember.$(".login .error").fadeOut(500);
-					}, 4000);
+						Username: that.get('Data.username'),
+						Password: that.get('Data.password')
+					}
+				};
+
+				server.send(JSON.stringify(data));
+			});
+
+			server.on('message', function (data) 
+			{
+				var response = JSON.parse(data);
+
+				if (response.command === "Authentication/Login")
+				{
+					if (response.parameters.response === true)
+					{
+						that.transitionTo('lobby');
+					}
+					else
+					{
+						server.disconnect();
+
+						Ember.$(".login .error").html(response.parameters.response);
+						Ember.$(".login .error").fadeIn(500);
+
+						setTimeout(function () 
+						{
+							Ember.$(".login .error").fadeOut(500);
+						}, 4000);
+					}
 				}
-			}
-		});
+			});
+
+			this.set('initialized', true);
+		}
 	},
 
 	model: function ()
@@ -82,6 +91,8 @@ export default Ember.Route.extend
 
 		login: function () 
 		{
+			this.transitionTo('lobby');
+
 			var server = this.get('server');
 
 			var that = this;

@@ -41,7 +41,9 @@ export default Ember.Route.extend(
 			{ user: 'Pietro Smusi', content: 'Fantastico ora ci entro :D', system: false },
 			{ user: 'ArMa79', content: 'Sono gay ehehehehe ahahahvihfoeiowief', system: false },
 			{ user: 'Pietro Smusi', content: 'Oh malvenuto!', system: false }
-		]
+		],
+
+		userPopupState: false
 		
 	},
 

@@ -56,7 +56,8 @@ export default Ember.Component.extend(
 			pendingStates.push(
 			{
 				tool: tool,
-				params: params
+				params: params,
+				drawed: false
 			});
 
 			that.set('pendingStates', pendingStates);
@@ -94,7 +95,7 @@ export default Ember.Component.extend(
 				{
 					start: lastMousePos,
 					end: currentMousePos,
-					size: that.get('brushSize') / 5,
+					brushSize: that.get('brushSize') / 5,
 					color: that.get('brushColor')
 				});
 			}
@@ -105,7 +106,7 @@ export default Ember.Component.extend(
 				{
 					start: lastMousePos,
 					end: currentMousePos,
-					size: 1,
+					brushSize: 1,
 					color: that.get('brushColor')
 				});
 			}
@@ -127,6 +128,7 @@ export default Ember.Component.extend(
 				var height = currentMousePos.Y - initialMousePos.Y;
 
 				that.set('pendingStates', []);
+				that.send('ResetDrawing');
 
 				// - Draw a rectangle
 				addState(currentTool, 
@@ -141,6 +143,7 @@ export default Ember.Component.extend(
 			if (currentTool === 'circle') 
 			{
 				that.set('pendingStates', []);
+				that.send('ResetDrawing');
 
 				// - Draw a rectangle
 				addState(currentTool, 
@@ -165,6 +168,7 @@ export default Ember.Component.extend(
 			if (currentTool === 'fill') 
 			{
 				that.set('pendingStates', []);
+				that.send('ResetDrawing');
 
 				// - Draw a rectangle
 				addState(currentTool, 
@@ -172,6 +176,8 @@ export default Ember.Component.extend(
 					start: initialMousePos,
 					color: that.get('brushColor')
 				});
+
+				that.send('DrawState');
 			}
 		}
 
@@ -235,6 +241,8 @@ export default Ember.Component.extend(
 			setTimeout(refreshCycle, 1000);
 		}
 
+		this.send('ResetDrawing');
+		
 		refreshCycle();
 		
 	},
@@ -258,6 +266,36 @@ export default Ember.Component.extend(
 			this.set('currentTool', tool);
 		},
 
+		ResetDrawing: function () 
+		{
+			var states = this.get('states');
+
+			for (var i = states.length - 1; i >= 0; i--) 
+			{
+				states[i].drawed = false;
+			}
+
+			this.set('states', states);
+
+			states = this.get('pendingStates');
+
+			for (var i = states.length - 1; i >= 0; i--) 
+			{
+				states[i].drawed = false;
+			}
+
+			this.set('pendingStates', states);
+
+			var context = this.get('context');
+			var canvas = this.get('canvas');
+
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			context.fillStyle = "#FFF";
+			context.fillRect(0, 0, canvas.width, canvas.height);
+		},
+
+
 		DrawState: function () 
 		{
 			var context = this.get('context');
@@ -268,14 +306,14 @@ export default Ember.Component.extend(
 
 			states = states.concat(pendingStates);
 
-			context.clearRect(0, 0, canvas.width, canvas.height);
-
-			context.fillStyle = "#FFF";
-			context.fillRect(0, 0, canvas.width, canvas.height);
-
 			for (var i = 0; i < states.length; i++) 
 			{
 				var state = states[i];
+
+				if (state.drawed)
+					continue;
+
+				state.drawed = true;
 
 				if (state.tool === 'brush')
 				{
@@ -512,6 +550,15 @@ export default Ember.Component.extend(
 					context.putImageData(colorLayerData, 0, 0)
 				}
 			}
+
+			states = this.get('states');
+
+			for (var i = 0; i < states.length; i++) 
+			{
+				states[i].drawed = true;
+			}
+			
+			this.set('states', states);
 		}
 
 	}

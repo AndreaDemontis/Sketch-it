@@ -1,4 +1,4 @@
-{{top-bar topbarBorder=true userLogged=true}}
+{{top-bar topbarBorder=true userLogged=true userPopup=model.userPopupState}}
 
 <div class="gameplay">
 
@@ -50,3 +50,5 @@
 	</div>
 
 </div>
+
+{{user-profile visible=model.userPopupState}}
