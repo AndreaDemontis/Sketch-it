@@ -55,11 +55,18 @@ export default Ember.Route.extend(
 
 		var that = this;
 
-		if (server.connected) 
-		{
+		server.connect();
+
+			server.off('connect');
+			server.off('message');
+
+			
+
 			server.on('message', function (content) 
 			{
 				var data = JSON.parse(content);
+
+				
 
 				switch (data.command)
 				{
@@ -67,9 +74,11 @@ export default Ember.Route.extend(
 
 						var messages = that.get('modelData.messages');
 
-						messags.push(data);
+						messages.pushObject(data.parameters);
 
 						that.set('modelData.messages', messages);
+
+						messages = that.get('modelData.messages');
 
 						break;
 
@@ -82,7 +91,7 @@ export default Ember.Route.extend(
 						break;
 				}
 			});
-		}
+		
 	},
 
 

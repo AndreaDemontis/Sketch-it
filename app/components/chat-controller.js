@@ -17,6 +17,14 @@ export default Ember.Component.extend(
 		});
 	},
 
+
+	messagesChanged: Ember.observer('messages.[]', function() 
+	{
+		this.send('scrollDown');
+	}),
+
+
+
 	actions: 
 	{
 
