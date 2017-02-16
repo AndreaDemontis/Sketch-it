@@ -55,8 +55,7 @@ export default Ember.Route.extend(
 
 		var that = this;
 
-		server.connect();
-
+		
 			server.off('connect');
 			server.off('message');
 
@@ -118,8 +117,6 @@ export default Ember.Route.extend(
 				parameters: data
 			};
 
-			console.log(sendData);
-
 			server.send(JSON.stringify(sendData));
 		},
 
@@ -127,7 +124,7 @@ export default Ember.Route.extend(
 		{
 			var server = this.get('server');
 
-			//if (server.connected) 
+			if (server.connected) 
 			{
 				var data =
 				{
