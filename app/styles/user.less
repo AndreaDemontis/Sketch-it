@@ -30,6 +30,8 @@
 
 			width: 70%;
 
+			display: inline-block;
+
 			.avatar
 			{
 				display: inline-block;
@@ -103,21 +105,84 @@
 
 			.gallery
 			{
-				vertical-align: bottom;
-
-				height: 300px;
+				font-size: 25px;
+				color: #777;
+				margin-top: 20px;
 
 				.images
 				{
 					border-top: 1px solid #BBB;
 
-					overflow-x: scroll;
+					white-space: nowrap;
+						overflow-x: auto;
 
-					width: 600px;
+						img
+						{
+							display: inline;
+							margin: 5px;
+
+							border: 2px solid #888;
+							border-radius: 5px;
+						}
+					
 				}
 
 			}
 		}
+
+		.friends
+		{
+			padding: 5px;
+			margin-top: 10px;
+
+			width: 24%;
+
+			display: inline-block;
+
+			border-left: 1px solid #CCC;
+
+			vertical-align: top;
+
+			height: 95%;
+
+			.friend-block
+			{
+				margin-bottom: 10px;
+			}
+		}
 	}
 
+}
+
+.friend-block
+{
+	background: #EEE;
+	border-radius: 5px;
+	padding: 5px;
+
+	.name
+	{
+		font-weight: bolder;
+		font-size: 20px;
+	}
+
+	.status
+	{
+		font-weight: bolder;
+		font-size: 13px;
+	}
+
+	.buttons
+	{
+		float: right;
+		vertical-align: bottom;
+
+		margin-top: -3px;
+		padding-right: 6px;
+
+		fa-button
+		{
+			.FontAwesomeButton(20px);
+		}
+	}
 }

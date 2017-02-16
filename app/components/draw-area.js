@@ -259,11 +259,10 @@ export default Ember.Component.extend(
 			{
 				this.set('states', []);
 				this.set('pendingStates', []);
-
+				this.send('ResetDrawing');
 				this.send('DrawState');
 			}
-
-			this.set('currentTool', tool);
+			else this.set('currentTool', tool);
 		},
 
 		ResetDrawing: function () 
@@ -433,7 +432,7 @@ export default Ember.Component.extend(
 							return false;
 						}
 
-						return true;
+						return false;
 					};
 
 					function colorPixel (pixelPos, r, g, b, a) 
