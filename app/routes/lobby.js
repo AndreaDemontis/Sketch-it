@@ -111,7 +111,7 @@ export default Ember.Route.extend(
 
 			console.log(sendData);
 
-			server.send(sendData);
+			server.send(JSON.stringify(sendData));
 		},
 
 		sendMessage: function (content) 
@@ -129,7 +129,7 @@ export default Ember.Route.extend(
 					}
 				};
 
-				server.send(data);
+				server.send(JSON.stringify(data));
 			}
 		}
 
