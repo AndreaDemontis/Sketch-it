@@ -31,8 +31,8 @@ export default Ember.Route.extend
 					command: 'Authentication/Login',
 					parameters:
 					{
-						Username: that.get('Data.username'),
-						Password: that.get('Data.password')
+						username: that.get('Data.username'),
+						password: that.get('Data.password')
 					}
 				};
 
