@@ -80,6 +80,8 @@ export default Ember.Component.extend(
 				maxRounds: this.get('maxRounds')
 			};
 
+			window.alert(data.description);
+
 			this.sendAction('action', data);
 		}
 	}
