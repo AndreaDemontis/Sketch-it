@@ -42,7 +42,7 @@
 	<div class="right">
 		{{inputs/default-confirm-button label="Away" icon="fa-pause" color="#383433" }}
 		{{inputs/default-confirm-button label="Hint" icon="fa-question-circle" color="#E5B74B" }}
-		{{inputs/default-confirm-button label="Skip" icon="fa-flag" color="#554D9E" }}
+		{{inputs/default-confirm-button label="Skip" icon="fa-flag" action="endGame" color="#554D9E" }}
 		{{inputs/default-confirm-button label="Exit" icon="fa-sign-out" action="exit" color="#E24A4A" }}
 
 		{{draw-area}}
@@ -52,3 +52,4 @@
 </div>
 
 {{user-profile visible=model.userPopupState}}
+{{game-result visible=model.endGamePopupState}}

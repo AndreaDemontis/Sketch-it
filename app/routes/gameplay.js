@@ -43,7 +43,9 @@ export default Ember.Route.extend(
 			{ user: 'Pietro Smusi', content: 'Oh malvenuto!', system: false }
 		],
 
-		userPopupState: false
+		userPopupState: false,
+
+		endGamePopupState: false
 		
 	},
 
@@ -62,6 +64,11 @@ export default Ember.Route.extend(
 		exit: function () 
 		{
 			this.transitionTo('lobby');
+		},
+
+		endGame: function () 
+		{
+			this.set("modelData.endGamePopupState", true);
 		}
 	}
 

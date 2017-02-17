@@ -13,22 +13,9 @@ export default Ember.Service.extend(Ember.Evented,
 	{
 		this._super(...arguments);
 
-		this.set('socket', new net.Socket());
-	},
-
-	connect()
-	{
 		var that = this;
 
-		var socket = this.get('socket');
-
-		socket.connect(56489, '127.0.0.1', function() 
-		{
-			console.log('Client connected to the server.');
-
-			that.set('connected', true);
-			that.trigger('connect');
-		});
+		var socket = new net.Socket()
 
 		socket.on('error', function (exception) 
 		{
@@ -96,6 +83,23 @@ export default Ember.Service.extend(Ember.Evented,
 
 			that.set('connected', false);
 			that.trigger('disconnect');
+		});
+
+		this.set('socket', socket);
+	},
+
+	connect()
+	{
+		var that = this;
+
+		var socket = this.get('socket');
+
+		socket.connect(56489, '127.0.0.1', function() 
+		{
+			console.log('Client connected to the server.');
+
+			that.set('connected', true);
+			that.trigger('connect');
 		});
 	},
 

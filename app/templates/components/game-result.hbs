@@ -1,0 +1,31 @@
+<div class="overlay">
+	{{#click-outside action="outClick"}}
+	<div class="popup">
+		<div align="center">
+		<div class="winner">
+			<img src="assets/images/star.png" class="left">
+			<div>
+			The winner is<br>
+			<span class="username">FirstUser</span>
+			</div>
+			<img src="assets/images/star.png" class="right">
+		</div>
+		</div>
+
+		<div class="stats">
+			<div class="users">
+				<span>
+					<table>
+						{{#each users as |user|}}	
+							<tr>
+								<th style="{{if user.current 'font-weight: bolder;' ''}}">{{{user.name}}}</th>
+								<th>{{user.score}}pt</th>
+							</tr>
+						{{/each}}
+					</table>
+				</span>
+			</div>
+		</div>
+	</div>
+	{{/click-outside}}
+</div>

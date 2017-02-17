@@ -6,7 +6,7 @@ export default Ember.Component.extend(
 
 	open: false,
 
-	click: function () 
+	click: function (e) 
 	{
 		if (this.get("disabled"))
 		{
@@ -24,6 +24,8 @@ export default Ember.Component.extend(
 
 			this.set("open", true);
 		}
+
+		e.stopPropagation();
 	},
 
 	actions:

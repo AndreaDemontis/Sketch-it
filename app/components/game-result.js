@@ -2,6 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend(
 {
+	classNames: [ 'gameEndPopup' ],
+
+	users:
+	[
+		{ name: 'Giancarlo', drawing: false, score: 12 }, 
+		{ name: 'Mirry', drawing: true, score: 200}, 
+		{ name: 'Fra07', drawing: false, score: 0, current: true}, 
+		{ name: 'Dany', drawing: false, score: 132},
+		{ name: 'Dany', drawing: false, score: 132},
+		{ name: 'Dany', drawing: false, score: 132}
+	],
 
 	visible: false,
 
@@ -23,11 +34,11 @@ export default Ember.Component.extend(
 
 		if (value)
 		{
-			Ember.$(".overlay").fadeIn(500);
+			this.$(".overlay").fadeIn(500);
 		}
 		else
 		{
-			Ember.$(".overlay").fadeOut(500);
+			this.$(".overlay").fadeOut(500);
 		}
 	}),
 
