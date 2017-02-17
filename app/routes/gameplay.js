@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend(
 {
+	server: Ember.inject.service('server'),
+
 	modelData: 
 	{
 		users:
@@ -16,31 +18,6 @@ export default Ember.Route.extend(
 
 		messages:
 		[
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'SPAMMMM', system: false },
-			{ user: 'Giorgio', content: 'Hei ciao! come stai? :(', system: false },
-			{ user: 'Francesco', content: 'Hei ciao! sto bene owo', system: false },
-			{ user: 'xXxSimone200xXx', content: 'sono sordo.', system: false },
-			{ user: 'Giorgio', content: 'Hei ciao! come stai? :(', system: false },
-			{ user: '', content: 'A new user joined on Sketch-it!', system: true },
-			{ user: 'Pietro Smusi', content: 'Oh malvenuto!', system: false },
-			{ user: 'BaldoTridente', content: 'uvuvwevwevwe onyetenyevwe ugwemubwem ossas', system: false },
-			{ user: '', content: 'New public room: Bel nome', system: true },
-			{ user: 'Pietro Smusi', content: 'Fantastico ora ci entro :D', system: false },
-			{ user: 'ArMa79', content: 'Sono gay ehehehehe ahahahvihfoeiowief', system: false },
-			{ user: 'Pietro Smusi', content: 'Oh malvenuto!', system: false }
 		],
 
 		userPopupState: false,
@@ -51,6 +28,30 @@ export default Ember.Route.extend(
 
 	activate: function ()
 	{
+		var server = this.get('server');
+
+		var that = this;
+
+		server.off('connect');
+		server.off('message');
+
+		server.on('message', function (content) 
+		{
+			var data = JSON.parse(content);
+
+			switch (data.command)
+			{
+				case "Room/ReceiveMesage":
+
+					var messages = that.get('modelData.messages');
+
+					messages.pushObject(data.parameters);
+
+					that.set('modelData.messages', messages);
+
+					break;
+			}
+		});
 	},
 
 
@@ -69,6 +70,25 @@ export default Ember.Route.extend(
 		endGame: function () 
 		{
 			this.set("modelData.endGamePopupState", true);
+		},
+
+		sendMessage: function (data) 
+		{
+			var server = this.get('server');
+
+			if (server.connected) 
+			{
+				var data =
+				{
+					command: 'Room/SendMessage',
+					parameters:
+					{
+						content: content
+					}
+				};
+
+				server.send(JSON.stringify(data));
+			}
 		}
 	}
 
