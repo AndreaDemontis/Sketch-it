@@ -69,9 +69,9 @@ export default Ember.Component.extend(
 		{
 			var data =
 			{
-				roomName: this.get('roomName'),
-				roomPassword: this.get('roomPassword'),
-				roomDescription: this.get('roomDescription'),
+				name: this.get('roomName'),
+				password: this.get('roomPassword'),
+				description: this.get('roomDescription'),
 				endlessMode: this.get('endlessMode'),
 				enableAway: this.get('enableAway'),
 				enableHints: this.get('enableHints'),

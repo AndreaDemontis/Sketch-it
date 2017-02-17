@@ -44,12 +44,6 @@ export default Ember.Component.extend(
 
 	actions:
 	{
-		outClick: function () 
-		{
-			if (this.get('visible'))
-			{
-				this.set('visible', false);
-			}
-		}
+		
 	}
 });
