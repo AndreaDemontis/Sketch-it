@@ -45,7 +45,7 @@ export default Ember.Route.extend(
 
 				case "Lobby/RoomList":
 
-					var rooms = data.parameters.rooms;
+					var rooms = data.parameters;
 
 					that.set('modelData.rooms', rooms);
 
