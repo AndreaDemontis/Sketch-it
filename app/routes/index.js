@@ -53,7 +53,7 @@ export default Ember.Route.extend
 					{
 						server.disconnect();
 
-						Ember.$(".login .error").html(response.parameters.response);
+						Ember.$(".login .error").html(response.parameters.error);
 						Ember.$(".login .error").fadeIn(500);
 
 						setTimeout(function () 

@@ -50,6 +50,11 @@ export default Ember.Route.extend(
 					that.set('modelData.rooms', rooms);
 
 					break;
+
+				case "Lobby/OpenRoomResponse":
+
+					this.transitionTo('gameplay', data.parameters);
+
 			}
 		});
 		
@@ -64,9 +69,23 @@ export default Ember.Route.extend(
 	actions: 
 	{
 
-		openRoom: function () 
+		openRoom: function (room) 
 		{
-			this.transitionTo('gameplay');
+			var server = this.get('server');
+
+			if (server.connected) 
+			{
+				var sendData =
+				{
+					command: 'Lobby/JoinRoom',
+					parameters: 
+					{
+						id: room.id
+					}
+				};
+
+				server.send(JSON.stringify(sendData));
+			}
 		},
 
 		newRoom: function (data) 
