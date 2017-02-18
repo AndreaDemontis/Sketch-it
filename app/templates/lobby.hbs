@@ -2,24 +2,31 @@
 
 
 {{#animations/fade-slide}}
-<div class="lobby">
+	<div class="lobby">
 
-	<div class="roomList">
+		{{! Left part (room list) }}
+		<div class="roomList">
 
-	{{room-list-new action="newRoom"}}
-	
-	{{#each model.rooms as |item|}}	
-		{{room-list-entry data=item action="openRoom"}}
-	{{/each}}
-		
+			{{! This row adds new rooms }}
+			{{room-list-new action="newRoom"}}
+			
+			{{! Room list }}
+			{{#each model.rooms as |item|}}	
+
+				{{room-list-entry data=item action="openRoom"}}
+
+			{{/each}}
+			
+		</div>
+
+		{{! Right part (chat) }}
+		<div class="chat">
+
+			{{chat-controller messages=model.messages action='sendMessage'}}
+			
+		</div>
 
 	</div>
-
-	<div class="chat">
-		{{chat-controller messages=model.messages action='sendMessage'}}
-	</div>
-
-</div>
 {{/animations/fade-slide}}
 
 {{user-profile visible=model.userPopupState}}

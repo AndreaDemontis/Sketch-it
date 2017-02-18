@@ -2,22 +2,33 @@
 
 <div class="gameplay">
 
+	{{! Left layout column }}
 	<div class="left">
+
+		{{! Round and users }}
 		<div class="top">
+
+			{{! User list }}
 			<div class="users">
-				<span>
-					<table>
-						{{#each model.users as |user|}}	
-							<tr>
-								<th style="{{if user.current 'font-weight: bolder;' ''}}">{{{user.name}}}</th>
-								<th>{{user.score}}pt</th>
-								<th><i class="fa fa-pencil" style="color:{{if user.drawing '#444' '#DDD'}};" /></th>
-							</tr>
-						{{/each}}
-					</table>
-				</span>
+				<table>
+
+					{{#each model.users as |user|}}	
+						<tr>
+
+							<th style="{{if user.current 'font-weight: bolder;' ''}}">{{{user.name}}}</th>
+							<th>{{user.score}}pt</th>
+							<th><i class="fa fa-pencil" style="color:{{if user.drawing '#444' '#DDD'}};" /></th>
+
+						</tr>
+					{{/each}}
+
+				</table>
 			</div>
+
+			{{! Round informations }}
 			<div class="round">
+
+				{{! Timer }}
 				<div class="timer">
 					{{charts/radial-chart proggress=75}}
 					<div class="info">
@@ -25,26 +36,37 @@
 						<span class="role">Now you are drawing</span>
 					</div>
 				</div>
+
+				{{! Current word }}
 				<div class="word">
 					The current word is<br>
 					<i class="fa fa-info-circle"></i>
 					<span class="word">Hospital</span>
 				</div>
+
 			</div>
+
 		</div>
+
+		{{! Chat section }}
 		<div class="bottom">
 			<div class="chat">
 				{{chat-controller messages=model.messages action='sendMessage'}}
 			</div>
 		</div>
+
 	</div>
 
+	{{! Right layout column}}
 	<div class="right">
+
+		{{! Control buttons }}
 		{{inputs/default-confirm-button label="Away" icon="fa-pause" color="#383433" }}
 		{{inputs/default-confirm-button label="Hint" icon="fa-question-circle" color="#E5B74B" }}
 		{{inputs/default-confirm-button label="Skip" icon="fa-flag" action="endGame" color="#554D9E" }}
 		{{inputs/default-confirm-button label="Exit" icon="fa-sign-out" action="exit" color="#E24A4A" }}
 
+		{{! Draw area }}
 		{{draw-area}}
 	
 	</div>

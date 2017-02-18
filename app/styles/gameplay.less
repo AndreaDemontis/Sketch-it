@@ -1,131 +1,123 @@
-
 .gameplay
 {
+	// - Size
 	width: 100%;
-
 	height: calc(~"100% - 47px");
 
 	.right
 	{
+		// - Positioning
 		display: inline-block;
-
-		width: 610px;
-
 		text-align: right;
+
+		// - Size
+		width: 610px;
 
 		confirmButton
 		{
+			// - Buttons positioning
 			display: inline-block;
 			margin-right: 10px;
-		}
-
-		.score
-		{
-			float: left;
 		}
 	}
 
 	.left
 	{
+		// - Size
 		width: 520px;
 		height: 100%;
 
+		// - Positioning
 		display: inline-block;
 
 		.top
 		{
+			// - Separator from chat
 			border-bottom: 2px dashed #DDD;
 
+			// - Size
 			height: 150px;
 
+			// - Positioning
 			padding: 5px;
 
 			.users
 			{
+				// - Positioning
 				padding-left: 15px;
-
 				display: inline-block;
 
+				// - Size
 				width: 230px;
 				height: 150px;
+
+				// - User list croll
 				overflow-y: scroll;
 
-				table
-				{
-					margin: 0px;
-					margin-top: 5px;
-					padding: 0px;
-
-					width: 100%;
-
-					tr th
-					{
-						font-size: 15px;
-						font-stretch: none;
-						font-weight: normal;
-						color: #444;
-						border-bottom: 1px dashed #DDD;
-
-						text-align: left;
-					}
-
-					tr:last-child th
-					{
-						border-bottom: none;
-					}
-
-					tr
-					{
-						padding: 5px;
-					}
-				}
+				.UserList(15px);
 			}
 
 			.round
 			{
+				// - Positioning
 				vertical-align: top;
-				width: 250px;
 				padding: 5px;
+
+				// - Size
+				width: 250px;
 
 				.timer
 				{
+					// - Positioning
+					padding-left: 10px;
+
+					// - Size
+					height: 60px;
+
+					// - Font style
+					line-height: 15px;
+
+					// - Bottom separator
+					border-bottom: 1px solid #DDD;
+
 					.radialChart { float: left; }
 
 					.info
 					{
+						// - Positioning
 						padding-top: 10px;
 
+						// - Text color
 						color: #444;
 
+						// - Text round and role
 						.roundNumber { font-weight: bolder; margin-left: 14px; }
 						.role { font-weight: bolder; color: #888; font-size: 13px; margin-left: 14px; }
 					}
-					
-					padding-left: 10px;
-					height: 60px;
-
-					line-height: 15px;
-
-					border-bottom: 1px solid #DDD;
 				}
 
 				.word
 				{
+					// - Positioning
 					text-align: center;
 					margin-top: 20px;
 
+					// - Font style
 					font-weight: bolder;
 					color: #555;
 
 					i
 					{
+						// - Font style for icon (i)
 						font-size: 23px;
 					}
 
 					.word
 					{
+						// - Word color
 						color: rgb(150, 0, 0);
 
+						// - Font style
 						font-size: 23px;
 						font-weight: 700;
 						letter-spacing: 3px;
@@ -137,10 +129,12 @@
 
 		.bottom
 		{
+			// - Size
 			height: calc(~"100% - 165px");
 
 			.chat
 			{
+				// - Size
 				height: 100%;
 			}
 		}
@@ -157,14 +151,17 @@
 {
 	.winner
 	{
+		// - Positioning
 		text-align: center;
+		padding-top: 20px;
+
+		// - Font style
 		font-size: 25px;
 		color: #AAA;
 
-		padding-top: 20px;
-
 		.username
 		{
+			// - Font style
 			font-size: 50px;
 			font-weight: bolder;
 			color: rgb(7, 227, 230);
@@ -174,11 +171,13 @@
 		div,
 		img
 		{
+			// - Inline style for stars
 			display: inline-block;
 		}
 
 		div
 		{
+			// - Star positioning and text positioning
 			vertical-align: 80%;
 			margin-left: 20px;
 			margin-right: 20px;
@@ -186,58 +185,36 @@
 
 		.left
 		{
+			// - Left star rotation
 			transform: rotate(-20deg);
 		}
 
 		.right
 		{
+			// - Right star rotation
 			transform: rotate(20deg);
 		}
 	}
 
 	.stats
 	{
+		// - Positioning
 		padding-top: 20px;
 		
 		.users
-			{
-				padding-left: 15px;
+		{
+			// - Positioning
+			padding-left: 15px;
+			display: inline-block;
 
-				display: inline-block;
+			// - Size
+			width: 430px;
+			height: 350px;
 
-				width: 430px;
-				height: 350px;
-				overflow-y: scroll;
+			// - User list scroll
+			overflow-y: scroll;
 
-				table
-				{
-					margin: 0px;
-					margin-top: 5px;
-					padding: 0px;
-
-					width: 100%;
-
-					tr th
-					{
-						font-size: 20px;
-						font-stretch: none;
-						font-weight: normal;
-						color: #444;
-						border-bottom: 1px dashed #DDD;
-
-						text-align: left;
-					}
-
-					tr:last-child th
-					{
-						border-bottom: none;
-					}
-
-					tr
-					{
-						padding: 5px;
-					}
-				}
-			}
+			.UserList(20px);
+		}
 	}
 }

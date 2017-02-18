@@ -6,16 +6,10 @@ export default Ember.Route.extend(
 
 	modelData: 
 	{
-		rooms:
-		[
-		],
-
-		messages:
-		[
-		],
+		rooms: [],
+		messages: [],
 
 		userPopupState: false
-		
 	},
 
 	activate: function ()
@@ -24,9 +18,11 @@ export default Ember.Route.extend(
 
 		var that = this;
 
+		// - Remove binded events
 		server.off('connect');
 		server.off('message');
 
+		// - Handle server messages
 		server.on('message', function (content) 
 		{
 			var data = JSON.parse(content);
@@ -39,6 +35,7 @@ export default Ember.Route.extend(
 
 					messages.pushObject(data.parameters);
 
+					// - Add a message to the chat
 					that.set('modelData.messages', messages);
 
 					break;
@@ -47,14 +44,15 @@ export default Ember.Route.extend(
 
 					var rooms = data.parameters;
 
+					// - Update room list
 					that.set('modelData.rooms', rooms);
 
 					break;
 
 				case "Lobby/OpenRoomResponse":
 
+					// - Handle room join confirm
 					this.transitionTo('gameplay', data.parameters);
-
 			}
 		});
 		
@@ -84,12 +82,14 @@ export default Ember.Route.extend(
 					}
 				};
 
+				// - Send message to the server
 				server.send(JSON.stringify(sendData));
 			}
 		},
 
 		newRoom: function (data) 
 		{
+			this.transitionTo('gameplay');
 			var server = this.get('server');
 
 			if (server.connected) 
@@ -100,6 +100,7 @@ export default Ember.Route.extend(
 					parameters: data
 				};
 
+				// - Send message to the server
 				server.send(JSON.stringify(sendData));
 			}
 		},
@@ -119,6 +120,7 @@ export default Ember.Route.extend(
 					}
 				};
 
+				// - Send message to the server
 				server.send(JSON.stringify(data));
 			}
 		}

@@ -1,10 +1,27 @@
 <ul class="chatContent">
+
 	{{#each messages as |message|}}
+
 		<li class="message">
+
 			<span class="{{if message.system 'system' ''}}">
-				<span class="user">{{message.user}}</span> <span class="content">{{message.content}}</span>
+
+				{{#unless message.system}}
+					<span class="user">{{message.user}}: </span> 
+				{{/unless}}
+
+				<span class="content">{{message.content}}</span> 
+				
+				{{#if message.score}}
+					<span class="score">+{{message.score}}pt</span>
+				{{/if}}
+
 			</span>
+
 		</li>
+
 	{{/each}}
+
 </ul>
+
 {{inputs/default-textbox placeholder="Type here..." currValue=message onEnter="sendMessage"}}

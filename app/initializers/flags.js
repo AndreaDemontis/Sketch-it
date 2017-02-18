@@ -5,6 +5,12 @@ export function initialize ()
 	ENV.APP.supportedLanguages = 
 	[
 		{ name: 'Italy', description: 'Italiano', html: '<span class="flag-icon flag-icon-it"></span>' },
+		{ name: 'English', description: 'Inglese', html: '<span class="flag-icon flag-icon-gb"></span>', selected: true},
+	];
+
+	ENV.APP.allLanguages = 
+	[
+		{ name: 'Italy', description: 'Italiano', html: '<span class="flag-icon flag-icon-it"></span>' },
 		{ name: 'France', description: 'Francia', html: '<span class="flag-icon flag-icon-fr"></span>' },
 		{ name: 'English', description: 'Inglese', html: '<span class="flag-icon flag-icon-gb"></span>', selected: true},
 		{ name: 'Japanese', description: 'Giapponese', html: '<span class="flag-icon flag-icon-jp"></span>' },

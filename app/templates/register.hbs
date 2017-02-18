@@ -1,43 +1,67 @@
 {{top-bar showTitle=false}}
 
 {{#animations/fade-slide}}
-<div class="register" align="center">
+	<div class="register" align="center">
 
-	<span class="logo">Sketch<span>it</span></span><br>
-	<span class="subtitle">Register</span>
+		<span class="logo">Sketch<span>it</span></span><br>
+		<span class="subtitle">Register</span>
 
-	<div class="content">
+		<div class="content">
 
-		<div class="form">
-			<div class="position" data-balloon="Automatic localization" data-balloon-pos="up">
-				{{inputs/fa-button icon="fa-street-view" action="setLocalization"}}
+			<div class="form">
+
+				{{! Position form }}
+				<div class="position" data-balloon="Automatic localization" data-balloon-pos="up">
+					{{inputs/fa-button icon="fa-street-view" action="setLocalization"}}
+				</div>
+				{{inputs/default-select data=model.supportedLanguages controllerName="language"}}
+
+				<br><br>
+				
+				{{! Username }}
+				{{inputs/default-textbox currValue=model.username onChange="checkValues" placeholder="Username"}}
+
+				<br><br>
+
+				{{! Mail textbox}}
+				<span id="mail" data-balloon-visible>
+					{{inputs/default-textbox currValue=model.email placeholder="E-mail" onChange="checkValues"}}
+				</span>
+
+				<br><br>
+
+				{{! Password textbox }}
+				<span id="password" data-balloon-visible>
+					{{inputs/default-textbox currValue=model.password placeholder="Password" onChange="checkValues" password=true}}
+				</span>
+
+				<br><br>
+
+				{{! Password confirm textbox }}
+				<span id="passwordConfirm" data-balloon-visible>
+					{{inputs/default-textbox currValue=model.passwordConfirm placeholder="Retype password" onChange="checkValues" password=true}}
+				</span>
+
+				<br><br><br>
+
+				{{! Confirm buttons }}
+				{{inputs/default-button text="Cancel" action="cancel"}}
+				{{inputs/default-button text="Confirm" disabled=model.disabled action="confirm"}}
+
 			</div>
-			{{inputs/default-select data=model.supportedLanguages controllerName="language"}}
-			<br><br>
-			{{inputs/default-textbox currValue=model.username onChange="check" placeholder="Username"}}
-			<br><br>
-			<span id="mail" data-balloon-visible>
-				{{inputs/default-textbox currValue=model.email placeholder="E-mail" onChange="mailCheck"}}
-			</span>
-			<br><br>
-			<span id="password" data-balloon-visible>
-				{{inputs/default-textbox currValue=model.password placeholder="Password" onChange="passwordCheck" password=true}}
-			</span>
-			<br><br>
-			<span id="passwordConfirm" data-balloon-visible>
-				{{inputs/default-textbox currValue=model.passwordConfirm placeholder="Retype password" onChange="passwordConfirmCheck" password=true}}
-			</span>
-			<br><br><br>
-			{{inputs/default-button text="Cancel" action="cancel"}}
-			{{inputs/default-button text="Confirm" disabled=model.disabled action="confirm"}}
+
+		</div>
+
+		{{! Error box message }}
+		<div class="error">
+			Hey ciao!
 		</div>
 
 	</div>
 
-</div>
-<div class="registerCompleted">
+	{{! Register completed popup }}
+	<div class="registerCompleted">
 
-	
+	</div>
 
-</div>
 {{/animations/fade-slide}}

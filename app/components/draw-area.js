@@ -38,6 +38,8 @@ export default Ember.Component.extend(
 		this.set('canvas', cv);
 		this.set('context', ctx);
 
+		var firstClick = false;
+
 		var saveState = function () 
 		{
 			var states = that.get('states');
@@ -68,9 +70,28 @@ export default Ember.Component.extend(
 			that.set('pendingStates', []);
 		};
 
-		var restoreState = function (state) 
+		var undo = function () 
 		{
-			// body...
+			var states = that.get('states');
+
+			if (states.length <= 0)
+			{
+				return;
+			}
+
+			while (!states[states.length - 1].params.first)
+			{
+				states.pop();
+			}
+
+			states.pop();
+
+			that.set('states', states);
+
+			clearCurrentState();
+
+			that.send('ResetDrawing');
+			that.send('DrawState');
 		};
 
 		var mouseMove = function (mouse) 
@@ -96,7 +117,8 @@ export default Ember.Component.extend(
 					start: lastMousePos,
 					end: currentMousePos,
 					brushSize: that.get('brushSize') / 5,
-					color: that.get('brushColor')
+					color: that.get('brushColor'),
+					first: firstClick
 				});
 			}
 
@@ -107,7 +129,8 @@ export default Ember.Component.extend(
 					start: lastMousePos,
 					end: currentMousePos,
 					brushSize: 1,
-					color: that.get('brushColor')
+					color: that.get('brushColor'),
+					first: firstClick
 				});
 			}
 
@@ -118,7 +141,8 @@ export default Ember.Component.extend(
 					start: lastMousePos,
 					end: currentMousePos,
 					brushSize: that.get('brushSize') / 5,
-					color: "#FFF"
+					color: "#FFF",
+					first: firstClick
 				});
 			}
 
@@ -136,7 +160,8 @@ export default Ember.Component.extend(
 					start: initialMousePos,
 					size: { width: width, height: height },
 					brushSize: that.get('brushSize') / 5,
-					color: that.get('brushColor')
+					color: that.get('brushColor'),
+					first: true
 				});
 			}
 
@@ -151,11 +176,14 @@ export default Ember.Component.extend(
 					start: initialMousePos,
 					size: currentMousePos,
 					brushSize: that.get('brushSize') / 5,
-					color: that.get('brushColor')
+					color: that.get('brushColor'),
+					first: true
 				});
 			}
 
 			that.send('DrawState');
+
+			firstClick = false;
 		};
 
 		var mouseDownActions = function (mouse) 
@@ -217,6 +245,8 @@ export default Ember.Component.extend(
 				that.set('initialMousePos', currentMousePos);
 				that.set('currentMousePos', currentMousePos);
 
+				firstClick = true;
+
 				// - Add listener for mouse move and key up
 				canvas.addEventListener('mousemove', mouseMove, false);
 				canvas.addEventListener('mouseup', mouseUp, false);
@@ -232,7 +262,18 @@ export default Ember.Component.extend(
 			}
 		};
 
+		function KeyPress(e) 
+		{
+			var evtobj = window.event ? event : e;
+
+			if (evtobj.keyCode == 90 && evtobj.ctrlKey)
+			{
+				undo();
+			}
+		}
+
 		cv.onmousedown = mouseDown;
+		document.onkeydown = KeyPress;
 
 		// - Update cycle
 		function refreshCycle() 

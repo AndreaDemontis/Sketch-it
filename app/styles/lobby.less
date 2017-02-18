@@ -1,24 +1,31 @@
 div > .lobby
 {
+	// - Set default height minus top bar height
 	height: calc(~"100% - 47px");
 
 	.roomList
 	{
+		// - Size
 		width: 64%;
 		height: 100%;
 
+		// - Positioning
 		float: left;
 
+		// - Room list scroll
 		overflow-y: scroll;
 	}
 
 	.chat
 	{
+		// - Size
 		width: 35%;
 		height: 100%;
 
+		// - Positioning
 		float: right;
 
+		// - Separator
 		border-left: 1px solid #999;
 	}
 
@@ -26,29 +33,42 @@ div > .lobby
 
 .roomListEntry > table
 {
-	border-bottom: 1px solid #DDD;
+	// - Size
 	height: 20px;
-	font-size: 17px;
-	padding: 5px;
 	width: 100%;
 
+	// - Separator
+	border-bottom: 1px solid #DDD;
+
+	// - Default font properties
+	font-size: 17px;
+
+	// - Space between rows
+	padding: 5px;
+
+	// - Cursor as a button
 	cursor: poiner;
 
 	.name
 	{
-		font-weight: 600;
+		// - Column width
 		width: 50%;
+
+		// - Font style
+		font-weight: 600;
 		text-align: left;
 		font-stretch: condensed;
 
 		span
 		{
+			// - Flag margin
 			margin-right: 5px;
 		}
 	}
 
 	.users
 	{
+		// - Size
 		width: auto;
 	}
 
@@ -56,34 +76,44 @@ div > .lobby
 	{
 		fa-button
 		{
+			// - Default button style
 			.FontAwesomeButton(20px);
 		}
 	}
 
 	.expanded
 	{
+		// - Positioning
 		text-align: left;
 		padding-top: 0px;
 
+		// - Invisible
 		display: none;
 
 		.info
 		{
+			// - Font style
 			font-size: 13px;
 			font-stretch: none;
 			font-weight: normal;
+
+			// - Color
 			color: #999;
 		}
 
 		.description
 		{
+			// - Size
 			width: 50%;
 
 			span
 			{
+				// - Font style
 				font-size: 15px;
 				font-stretch: none;
 				font-weight: normal;
+
+				// - Color
 				color: #444;
 			}
 
@@ -91,59 +121,54 @@ div > .lobby
 
 		.userlist
 		{
+			// - Separator
 			border-left: 1px solid #EEE;
+
+			// - Positioning
 			padding-left: 15px;
 
+			// - Row width
 			width: 50%;
 
-			table
-			{
-				margin: 0px;
-				margin-top: 5px;
-				padding: 0px;
-
-				width: 100%;
-
-				tr th
-				{
-					font-size: 15px;
-					font-stretch: none;
-					font-weight: normal;
-					color: #444;
-					border-bottom: 1px dashed #DDD;
-				}
-
-				tr
-				{
-					padding: 5px;
-				}
-			}
+			.UserList(15px);
 		}
 	}
 }
 
 .roomListEntryNew > table
 {
+	// - Separator
 	border-bottom: 1px solid #DDD;
+
+	// - Size
 	height: 20px;
-	font-size: 17px;
-	padding: 5px;
 	width: 100%;
+
+	// - Font style
+	font-size: 17px;
+
+	// - Positioning
+	padding: 5px;
 
 	.name
 	{
-		font-weight: 600;
+		// - Size
 		width: 50%;
+
+		// - Font style
+		font-weight: 600;
 		text-align: left;
 		font-stretch: condensed;
 
 		i
 		{
+			// - Font style
 			font-size: 25px;
 		}
 
 		& > span
 		{
+			// - Positioning
 			vertical-align: 10%;
 			margin-left: 5px;
 		}
@@ -151,58 +176,70 @@ div > .lobby
 
 	.confirm
 	{
+
 		background-color: #93D339;
-		border-radius: 5px;
+
+		// - Position
 		padding: 4px;
 		width: 90px;
-
-		color: #FFF;
-
 		float: right;
+
+		//- Text color
+		color: #FFF;
 	}
 
 	.expanded
 	{
+		// - Positioning
 		text-align: left;
 		padding-top: 0px;
 
+		// - Hide
 		display: none;
 
 		.roomName > textbox
 		{
+			// - Default textbox style
 			.DefaultTextbox(20px, 200px, true, true);
 		}
 
 		.roomPassword > textbox
 		{
+			// - Default textbox style
 			.DefaultTextbox(13px, 100px, true, true);
 		}
 
 		.roomDescription
 		{
+			// - Padding from password field
 			margin-top: 10px;
 
 			textarea
 			{
-				resize: none;
-				outline: none;
+				// - Positioning
 				padding: 5px;
 
+				// - Border
 				border-radius: 5px;
+				outline: none;
 
+				// - Size
 				width: 250px;
 				height: 100px;
+				resize: none;
 			}
 		}
 
 		.options
 		{
+			// - Border (separator)
 			border-left: 1px solid #EEE;
 
+			// - Positioning
 			vertical-align: top;
-
 			padding-left: 10px;
 
+			// - Text style
 			font-weight: normal;
 
 			& > .title

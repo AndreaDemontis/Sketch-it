@@ -6,24 +6,12 @@ export default Ember.Route.extend(
 
 	modelData: 
 	{
-		users:
-		[
-			{ name: 'Giancarlo', drawing: false, score: 12 }, 
-			{ name: 'Mirry', drawing: true, score: 200}, 
-			{ name: 'Fra07', drawing: false, score: 0, current: true}, 
-			{ name: 'Dany', drawing: false, score: 132},
-			{ name: 'Dany', drawing: false, score: 132},
-			{ name: 'Dany', drawing: false, score: 132}
-		],
-
-		messages:
-		[
-		],
+		users: [],
+		messages: [],
 
 		userPopupState: false,
 
 		endGamePopupState: false
-		
 	},
 
 	activate: function ()
@@ -32,9 +20,10 @@ export default Ember.Route.extend(
 
 		var that = this;
 
-		server.off('connect');
+		// - Reset message handlers
 		server.off('message');
 
+		// - Server messages handler
 		server.on('message', function (content) 
 		{
 			var data = JSON.parse(content);
@@ -45,8 +34,10 @@ export default Ember.Route.extend(
 
 					var messages = that.get('modelData.messages');
 
+					// - Push new messages on the message list
 					messages.pushObject(data.parameters);
 
+					// - Update chat messages
 					that.set('modelData.messages', messages);
 
 					break;
@@ -64,11 +55,13 @@ export default Ember.Route.extend(
 	{
 		exit: function () 
 		{
+			// TODO: Send message to the server for room exit
 			this.transitionTo('lobby');
 		},
 
 		endGame: function () 
 		{
+			// - TODO: This will be triggered from the server
 			this.set("modelData.endGamePopupState", true);
 		},
 
@@ -87,6 +80,7 @@ export default Ember.Route.extend(
 					}
 				};
 
+				// - Send chat message to the server
 				server.send(JSON.stringify(data));
 			}
 		}
