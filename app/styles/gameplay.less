@@ -153,7 +153,7 @@
 	{
 		// - Positioning
 		text-align: center;
-		padding-top: 20px;
+		padding-top: 10px;
 
 		// - Font style
 		font-size: 25px;
@@ -178,7 +178,7 @@
 		div
 		{
 			// - Star positioning and text positioning
-			vertical-align: 80%;
+			vertical-align: 90%;
 			margin-left: 20px;
 			margin-right: 20px;
 		}
@@ -206,6 +206,7 @@
 			// - Positioning
 			padding-left: 15px;
 			display: inline-block;
+			text-align: left;
 
 			// - Size
 			width: 430px;
@@ -215,6 +216,183 @@
 			overflow-y: scroll;
 
 			.UserList(20px);
+		}
+
+		.drawings
+		{
+			// - Positioning
+			display: inline-block;
+			vertical-align: top;
+
+			.list
+			{
+				// - Positioning
+				display: inline-block;
+				vertical-align: top;
+				padding: 0px;
+				margin: 0px;
+
+				// - Scroll
+				overflow-y: scroll;
+    			height: 310px;
+
+				li
+				{
+					// - Positioning
+					margin: 5px;
+
+					// - Reset list style
+					list-style: none;
+					padding: 0px;
+
+					// - Borders
+					border-radius: 5px;
+					border: 2px solid #AAA;
+
+					&:hover
+					{
+						// - Border highlight
+						border: 2px solid rgb(7, 227, 230);
+
+						// - Cursor
+						cursor: pointer;
+					}
+
+					&:active
+					{
+						// - Border highlight
+						border: 2px solid rgb(39, 139, 145);
+					}
+				}
+			}
+
+			.viewer
+			{
+				// - Positioning
+				display: inline-block;
+				position: relative; 
+
+				// - Borders
+				border-radius: 5px;
+				border: 2px solid #AAA;
+
+				.details
+				{
+					// - Animation
+					-webkit-transition: all 300ms 0s ease-in-out;
+					transition: all 300ms 0s ease-in-out;
+
+					// - Size
+					width: 100%;
+					height: 55px;
+
+					// - Overflow
+					overflow: hidden;
+
+					// - Background
+					background: rgba(0, 0, 0, 0.4);
+
+					// - Borders
+					border-bottom-right-radius: 3px;
+					border-bottom-left-radius: 3px;
+
+					// - Positioning
+					position: absolute; 
+					bottom: 0px;
+
+					&:hover
+					{
+						// - Open details
+						height: 100%;
+					}
+
+					.content
+					{
+						// - Positioning
+						margin-top: 10px;
+						margin-left: 5px;
+
+						.word
+						{
+							// - Font style
+							font-size: 25px;
+							font-weight: bolder;
+							font-stretch: condensed;
+							color: #FFF;
+						}
+
+						.author
+						{
+							// - Font style
+							font-size: 14px;
+							color: #E5E5E5;
+						}
+
+						.round
+						{
+							// - Positioning
+							margin-top: 10px;
+							margin-left: 5px;
+
+							// - Font style
+							font-size: 16px;
+							font-weight: bolder;
+							color: #FFF;
+						}
+
+						.scores
+						{
+							// - Background
+							background: rgba(0, 0, 0, 0.3);
+
+							// - Positioning
+							padding-top: 5px;
+
+							// - Size
+							height: 100%;
+
+							.score
+							{
+								// - Font style
+								font-size: 20px;
+								font-weight: bolder;
+								color: #FFF;
+
+								// - Positioning
+								margin-left: 10px;
+							}
+
+							.scoreboard
+							{
+								.UserList(15px, #FFF);
+
+								// - Size
+								height: 207px;
+
+								// - Overflow
+								overflow-y: scroll;
+
+								// - Text style
+								text-align: left;
+
+								table > tr > th
+								{
+									padding-left: 10px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.buttons
+	{
+		// - Spacing
+		default-button
+		{
+			margin-left: 10px;
 		}
 	}
 }

@@ -202,7 +202,8 @@ export default Ember.Component.extend(
 				addState(currentTool, 
 				{
 					start: initialMousePos,
-					color: that.get('brushColor')
+					color: that.get('brushColor'),
+					first: true
 				});
 
 				that.send('DrawState');
@@ -344,6 +345,8 @@ export default Ember.Component.extend(
 			var states = this.get('states');
 			var pendingStates = this.get('pendingStates');
 
+			var colorTreshold = 0.9;
+
 			states = states.concat(pendingStates);
 
 			for (var i = 0; i < states.length; i++) 
@@ -461,27 +464,42 @@ export default Ember.Component.extend(
 						b = colorLayerData.data[pixelPos + 2];
 						a = colorLayerData.data[pixelPos + 3];
 
-						// - If the current pixel matches the clicked color
-						if (r === startR && g === startG && b === startB && a === startA) 
-						{
-							return true;
-						}
-
 						// - If current pixel matches the new color
 						if (r === fillColor.r && g === fillColor.g && b === fillColor.b) 
 						{
-							return false;
+							return 0;
 						}
 
-						return false;
+						// - Xalculate differences between reds, greens and blues
+						var rd = 255 - Math.abs(r - startR);
+						var gd = 255 - Math.abs(g - startG);
+						var bd = 255 - Math.abs(b - startB);
+
+						// - Limit differences between 0 and 1
+						rd /= 255;
+						gd /= 255;
+						bd /= 255;
+
+						// - 0 means opposit colors, 1 means same colors
+						var similar = (rd + gd + bd) / 3;
+
+						if (a === startA)
+						{
+							return similar;
+						}
 					};
 
-					function colorPixel (pixelPos, r, g, b, a) 
+					function colorPixel (pixelPos, r, g, b, a, treshold) 
 					{
-						colorLayerData.data[pixelPos] = r;
-						colorLayerData.data[pixelPos + 1] = g;
-						colorLayerData.data[pixelPos + 2] = b;
-						colorLayerData.data[pixelPos + 3] = a !== undefined ? a : 255;
+						var or = colorLayerData.data[pixelPos];
+						var og = colorLayerData.data[pixelPos + 1];
+						var ob = colorLayerData.data[pixelPos + 2];
+						var oa = colorLayerData.data[pixelPos + 3];
+
+						colorLayerData.data[pixelPos] = (r * treshold) + (or * (1 - treshold));
+						colorLayerData.data[pixelPos + 1] = (g * treshold) + (og * (1 - treshold));
+						colorLayerData.data[pixelPos + 2] = (b * treshold) + (ob * (1 - treshold));
+						colorLayerData.data[pixelPos + 3] = (a * treshold) + (oa * (1 - treshold));
 					};
 
 					function floodFill (startX, startY, startR, startG, startB, startA) 
@@ -504,7 +522,7 @@ export default Ember.Component.extend(
 							pixelPos = (y * canvas.width + x) * 4;
 
 							// - Go up as long as the color matches and are inside the canvas
-							while (y >= drawingBoundTop && matchStartColor(pixelPos, startR, startG, startB, startA)) 
+							while (y >= drawingBoundTop && matchStartColor(pixelPos, startR, startG, startB, startA) > colorTreshold) 
 							{
 								y -= 1;
 								pixelPos -= canvas.width * 4;
@@ -516,16 +534,16 @@ export default Ember.Component.extend(
 							reachRight = false;
 
 							// - Go down as long as the color matches and in inside the canvas
-							while (y <= drawingBoundBottom && matchStartColor(pixelPos, startR, startG, startB, startA)) 
+							while (y <= drawingBoundBottom && matchStartColor(pixelPos, startR, startG, startB, startA) > colorTreshold) 
 							{
 								y += 1;
 
 
-								colorPixel(pixelPos, fillColor.r, fillColor.g, fillColor.b);
+								colorPixel(pixelPos, fillColor.r, fillColor.g, fillColor.b, 255, matchStartColor(pixelPos, startR, startG, startB, startA));
 
 								if (x > drawingBoundLeft) 
 								{
-									if (matchStartColor(pixelPos - 4, startR, startG, startB, startA)) 
+									if (matchStartColor(pixelPos - 4, startR, startG, startB, startA) > colorTreshold) 
 									{
 										if (!reachLeft) 
 										{
@@ -542,7 +560,7 @@ export default Ember.Component.extend(
 
 								if (x < drawingBoundRight) 
 								{
-									if (matchStartColor(pixelPos + 4, startR, startG, startB, startA)) 
+									if (matchStartColor(pixelPos + 4, startR, startG, startB, startA) > colorTreshold) 
 									{
 										if (!reachRight) 
 										{

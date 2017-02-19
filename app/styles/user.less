@@ -1,67 +1,77 @@
 .overlay
 {
+	// - Overlay size
 	width: 100%;
 	height: 100%;
 
+	// - Positioning
 	position: absolute;
 	top: 0px;
 	left: 0px;
 
+	// - Background
 	background: rgba(0, 0, 0, 0.7);
 
 	.popup
 	{
+		// - Positioning
+		transform: translate(-50%, -50%);
 		position: fixed;
 		top: 50%;
 		left: 50%;
 
-		transform: translate(-50%, -50%);
-
+		// - Box style
 		background: #FFF;
 		border-radius: 5px;
 
+		// - Size
 		width: 80%;
 		height: 80%;
 
 		.profile
 		{
+			// - Positioning
 			padding: 10px;
 			padding-left: 30px;
-
-			width: 70%;
-
 			display: inline-block;
+
+			// - Size
+			width: 70%;
 
 			.avatar
 			{
+				// - Positioning
 				display: inline-block;
 
+				// - Icon size (only for avatar-less)
 				font-size: 170px;
 			}
 
 			.description
 			{
+				// - Positioning
 				display: inline-block;
-
 				vertical-align: top;
-
 				margin-top: 20px;
 				margin-left: 30px;
+
+				// - Size
 				width: 400px;
 
 				.username
 				{
+					// - Font style
 					font-size: 40px;
-
 					font-weight: bolder;
 				}
 
 				.desc
 				{
+					// - Font style
 					font-size: 19px;
-
 					color: #888;
 
+					// - Positioning
 					margin-top: 20px;
 				}
 			}
@@ -71,31 +81,35 @@
 
 				.favSketch
 				{
+					// - Positioning
 					display: inline-block;
 
 					img
 					{
+						// - Image border
 						border: 2px solid #888;
-
 						border-radius: 5px;
 					}
 				}
 
 				.numbers
 				{
+					// - Positioning
 					display: inline-block;
+					vertical-align: top;
+					padding: 10px;
+
+					// - Size
 					width: 200px;
 
+					// - Font style
 					font-size: 19px;
 					font-weight: 600;
 					color: #777;
 
-					vertical-align: top;
-
-					padding: 10px;
-
 					.value
 					{
+						// - Font style and positioning
 						float: right;
 						color: #333;
 					}
@@ -105,25 +119,32 @@
 
 			.gallery
 			{
+				// - Font style
 				font-size: 25px;
 				color: #777;
+
+				// - Positioning
 				margin-top: 20px;
 
 				.images
 				{
+					// - Border
 					border-top: 1px solid #BBB;
 
+					// - Scroll
 					white-space: nowrap;
-						overflow-x: auto;
+					overflow-x: auto;
 
-						img
-						{
-							display: inline;
-							margin: 5px;
+					img
+					{
+						// - Positioning
+						display: inline;
+						margin: 5px;
 
-							border: 2px solid #888;
-							border-radius: 5px;
-						}
+						// - Border
+						border: 2px solid #888;
+						border-radius: 5px;
+					}
 					
 				}
 
@@ -132,21 +153,22 @@
 
 		.friends
 		{
+			// - Positioning
 			padding: 5px;
 			margin-top: 10px;
-
-			width: 24%;
-
 			display: inline-block;
-
-			border-left: 1px solid #CCC;
-
 			vertical-align: top;
 
+			// - Size
+			width: 24%;
 			height: 95%;
+			
+			// - Border
+			border-left: 1px solid #CCC;
 
 			.friend-block
-			{
+			{	
+				// Positioning
 				margin-bottom: 10px;
 			}
 		}
@@ -156,27 +178,32 @@
 
 .friend-block
 {
+	// - Box style
 	background: #EEE;
 	border-radius: 5px;
+
+	// - Positioning
 	padding: 5px;
 
 	.name
 	{
+		// - Font style
 		font-weight: bolder;
 		font-size: 20px;
 	}
 
 	.status
 	{
+		// - Font style
 		font-weight: bolder;
 		font-size: 13px;
 	}
 
 	.buttons
 	{
+		// - Positioning
 		float: right;
 		vertical-align: bottom;
-
 		margin-top: -3px;
 		padding-right: 6px;
 

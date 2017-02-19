@@ -1,8 +1,12 @@
 <div class="friend-block">
 
-	<span class="name">FriendName</span><br>
-	<span class="status" style="color: green">online</span>
+	{{! Username and status }}
+	<span class="name">{{data.name}}</span><br>
+	<span class="status" style="color: {{if data.online "green" "red" }}">
+		{{if data.online "online" "offline" }}
+	</span>
 
+	{{! Actions }}
 	<div class="buttons">
 		{{inputs/fa-button icon="fa-trash"}}
 		{{inputs/fa-button icon="fa-envelope"}}

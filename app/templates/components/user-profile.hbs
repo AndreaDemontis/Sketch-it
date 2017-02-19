@@ -1,56 +1,76 @@
 <div class="overlay">
 	{{#click-outside action="outClick"}}
-	<div class="popup">
+		<div class="popup">
 
-		<div class="profile">
-			<div class="avatar">
-				<i class="fa fa-user-circle" />
-			</div>
-			<div class="description">
-				<span class="username"><span class="flag-icon flag-icon-it"></span> Username</span><br>
-				<span class="desc">Hi I'm Username, I was born in Sardinia and I like to draw everythink I see.</span>
+			{{! Main profile container }}
+			<div class="profile">
+
+				{{! Avatar }}
+				<div class="avatar">
+					<i class="fa fa-user-circle" />
+				</div>
+
+				{{! Avatar side - username and description }}
+				<div class="description">
+
+					{{! Username and flag }}
+					<span class="username">
+						<span class="flag-icon flag-icon-{{{user.language}}}"></span> 
+						{{{user.name}}}
+					</span>
+
+					<br>
+
+					{{! User description }}
+					<span class="desc">{{{user.description}}}</span>
+
+				</div>
+
+				{{! Stats section }}
+				<div class="stats">
+
+					{{! Favourite sketch }}
+					<div class="favSketch">
+						<img src="assets/images/dog.jpg" height="150" width="150">
+					</div>
+
+					{{! Statistics }}
+					<div class="numbers">
+						Wins: <span class="value">{{user.wins}}</span><br>
+						Words found: <span class="value">{{user.wordsFound}}</span><br>
+						Total games: <span class="value">{{user.totalGames}}</span><br>
+						Play time: <span class="value">{{user.playTime}}</span><br>
+						Member since: <span class="value">{{user.memberSince}}</span><br>
+					</div>
+
+				</div>
+
+				{{! User drawings gallery }}
+				<div class="gallery">
+
+					Gallery
+
+					<div class="images">
+						<img src="assets/images/dog.jpg" height="110" width="110">
+						<img src="assets/images/dog.jpg" height="110" width="110">
+						<img src="assets/images/dog.jpg" height="110" width="110">
+						<img src="assets/images/dog.jpg" height="110" width="110">
+						<img src="assets/images/dog.jpg" height="110" width="110">
+					</div>
+
+				</div>
+
 			</div>
 
-			<div class="stats">
-				<div class="favSketch">
-					<img src="assets/images/dog.jpg" height="150" width="150">
-				</div>
-				<div class="numbers">
-					Wins: <span class="value">64</span><br>
-					Words found: <span class="value">210</span><br>
-					Total games: <span class="value">43</span><br>
-					Play time: <span class="value">23h</span><br>
-					Member since: <span class="value">1yr</span><br>
-				</div>
-				<div class="rank">
+			{{! Friend list }}
+			<div class="friends">
 
-				</div>
+				{{#each user.friends as |friend|}}	
+					{{friend-block data=friend}}
+				{{/each}}
+
 			</div>
 
-			<div class="gallery">
-				Gallery
-				<div class="images">
-					
-					<img src="assets/images/dog.jpg" height="110" width="110">
-					<img src="assets/images/dog.jpg" height="110" width="110">
-					<img src="assets/images/dog.jpg" height="110" width="110">
-					<img src="assets/images/dog.jpg" height="110" width="110">
-					<img src="assets/images/dog.jpg" height="110" width="110">
-				</div>
-			</div>
 		</div>
-
-		<div class="friends">
-
-			{{friend-block}}
-			{{friend-block}}
-			{{friend-block}}
-			{{friend-block}}
-			{{friend-block}}
-			{{friend-block}}
-
-		</div>
-
-	</div>
 	{{/click-outside}}
 </div>
