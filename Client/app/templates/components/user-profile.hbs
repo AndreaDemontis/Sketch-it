@@ -1,0 +1,76 @@
+<div class="overlay">
+	{{#click-outside action="outClick"}}
+		<div class="popup">
+
+			{{! Main profile container }}
+			<div class="profile">
+
+				{{! Avatar }}
+				<div class="avatar">
+					<i class="fa fa-user-circle" />
+				</div>
+
+				{{! Avatar side - username and description }}
+				<div class="description">
+
+					{{! Username and flag }}
+					<span class="username">
+						<span class="flag-icon flag-icon-{{{user.language}}}"></span> 
+						{{{user.name}}}
+					</span>
+
+					<br>
+
+					{{! User description }}
+					<span class="desc">{{{user.description}}}</span>
+
+				</div>
+
+				{{! Stats section }}
+				<div class="stats">
+
+					{{! Favourite sketch }}
+					<div class="favSketch">
+						<img src="assets/images/bussola.png" height="150" width="150">
+					</div>
+
+					{{! Statistics }}
+					<div class="numbers">
+						Wins: <span class="value">{{user.wins}}</span><br>
+						Words found: <span class="value">{{user.wordsFound}}</span><br>
+						Total games: <span class="value">{{user.totalGames}}</span><br>
+						Play time: <span class="value">{{user.playTime}}</span><br>
+						Member since: <span class="value">{{user.memberSince}}</span><br>
+					</div>
+
+				</div>
+
+				{{! User drawings gallery }}
+				<div class="gallery">
+
+					Gallery
+
+					<div class="images">
+						<img src="assets/images/bussola.png" height="110" width="110">
+						<img src="assets/images/penna.png" height="110" width="110">
+						<img src="assets/images/portatile.png" height="110" width="110">
+						<img src="assets/images/circonferenza.png" height="110" width="110">
+						<img src="assets/images/cartella.png" height="110" width="110">
+					</div>
+
+				</div>
+
+			</div>
+
+			{{! Friend list }}
+			<div class="friends">
+
+				{{#each user.friends as |friend|}}	
+					{{friend-block data=friend}}
+				{{/each}}
+
+			</div>
+
+		</div>
+	{{/click-outside}}
+</div>

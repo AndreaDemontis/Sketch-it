@@ -1,0 +1,111 @@
+<div class="overlay">
+	<div class="popup">
+
+		{{! Winner title }}
+		<div align="center">
+			<div class="winner">
+
+				{{! Star image }}
+				<img src="assets/images/star.png" class="left">
+					
+				<div>
+					The winner is<br>
+					<span class="username">Username</span>
+				</div>
+
+				{{! Star image }}
+				<img src="assets/images/star.png" class="right">
+
+			</div>
+		</div>
+
+		{{! Scoreboard and drawings }}
+		<div class="stats">
+
+			{{! Scoreboard }}
+			<div class="users">
+				<span>
+					<table>
+
+						{{#each users as |user|}}	
+							<tr>
+								<th>{{{user.name}}}</th>
+								<th>{{user.score}}pt</th>
+							</tr>
+						{{/each}}
+
+					</table>
+				</span>
+			</div>
+
+			{{! Drawings }}
+			<div class="drawings">
+
+				{{! Drawings list }}
+				<ul class="list">
+
+					{{#each drawings as |drawing|}}
+						<li><img src="{{{drawing.file}}}" onClick={{action "selectImage" drawing}} height="80" width="80"></li>
+					{{/each}}
+
+				</ul>
+
+				{{! Current selected image details }}
+				<div class="viewer">
+
+					{{! Current image selected}}
+					<img src="{{selected.file}}" height="300" width="300" />
+
+					{{! Image details }}
+					<div class="details">
+						<span class="content">
+
+							{{! Drawed word and author }}
+							<span class="word">{{selected.word}} </span>
+							<span class="author">by {{selected.author}}</span>
+
+							<br>
+
+							{{! Round }}
+							<span class="round">Drawn on round {{selected.round}}</span>
+
+							<br><br>
+
+							{{! Scopreboard }}
+							<div class="scores">
+								<span class="score">Scoreboard</span>
+								<div class="scoreboard">
+									<table>
+
+										{{#each selected.scoreboard as |score|}}	
+											<tr>
+												<th>{{{score.name}}}</th>
+												<th>{{if score.found "Found" "Missed"}}</th>
+												{{#if score.found}}<th>{{score.time}}s</th>{{/if}}
+											</tr>
+										{{/each}}
+
+									</table>
+								</div>
+							</div>
+
+						</span>
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		{{! Control buttons }}
+		<div class="buttons" align="center">
+
+			{{inputs/default-button text="Exit" action="exit"}}
+			{{inputs/default-button text="New game" action="newGame"}}
+
+		</div>
+
+	</div>
+</div>

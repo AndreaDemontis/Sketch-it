@@ -1,0 +1,72 @@
+<table>
+
+	<tr id="row">
+
+		{{! Username and language flag }}
+		<th class="name">
+			<span class="flag-icon flag-icon-{{data.language}}"></span>
+			{{{data.name}}} <span id="expand">(Click for more dettails)</span>
+		</th>
+
+		{{! Number of users }}
+		<th class="users">
+			<i class="fa fa-user-circle" />
+			{{{data.users.length}}}/{{{data.maxPlayers}}}
+		</th>
+
+		{{! Number of rounds }}
+		<th class="round">
+			<i class="fa fa-bookmark-o" />
+			{{{data.currentRound}}}/{{{data.maxRounds}}}
+		</th>
+
+		{{! Join button }}
+		<th class="join">
+			{{inputs/fa-button icon="fa-sign-in" action="join"}}
+		</th>
+
+	</tr>
+
+
+	<tr class="expanded">
+
+		<th>
+
+			{{! Description }}
+			<span class="description">Description:<br>
+				<span>
+					{{{data.description}}}
+				</span>
+			</span>
+
+			<br>
+
+			{{! Small info }}
+			{{#if data.owner}}
+				<span class="info">created by {{data.owner.name}} at {{{timestamp}}}</span>
+			{{else}}
+				<span class="info">created by default.</span>
+			{{/if}}
+		</th>
+
+		{{! User list }}
+		<th class="userlist" colspan="3">
+			<span>
+				Users:<br>
+
+				<table>
+					{{#each data.users as |user|}}	
+						<tr>
+							<th>{{{user.name}}}</th>
+							<th>{{user.score}}pt</th>
+							<th><i class="fa fa-pencil" style="color:{{if user.drawing '#444' '#DDD'}};" /></th>
+						</tr>
+					{{/each}}
+				</table>
+				
+			</span>
+		</th>
+	</tr>
+
+
+</table>

@@ -1,0 +1,40 @@
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe.config
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.pdb
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csprojResolveAssemblyReference.cache
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.exe
+c:/users/pizzakun/documents/visual studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.pdb
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csprojResolveAssemblyReference.cache
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csproj.CoreCompileInputs.cache
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.exe
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/obj/Debug/SkethItServer.pdb
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe.config
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/SkethItServer.pdb
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.dll
+/Volumes/BOOTCAMP/Users/PizzaKun/Documents/Visual Studio 2017/Projects/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.xml
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe.config
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/bin/Debug/SkethItServer.pdb
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.dll
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.xml
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csprojResolveAssemblyReference.cache
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/obj/Debug/SkethItServer.exe
+C:/Users/PizzaKun/Desktop/SkethItServer/SkethItServer/obj/Debug/SkethItServer.pdb
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csprojResolveAssemblyReference.cache
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csproj.CoreCompileInputs.cache
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/obj/Debug/SkethItServer.exe
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/obj/Debug/SkethItServer.pdb
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe.config
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/bin/Debug/SkethItServer.pdb
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.dll
+/Volumes/SSDSUPPORT/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.xml
+G:/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe.config
+G:/SkethItServer/SkethItServer/bin/Debug/SkethItServer.exe
+G:/SkethItServer/SkethItServer/bin/Debug/SkethItServer.pdb
+G:/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.dll
+G:/SkethItServer/SkethItServer/bin/Debug/Newtonsoft.Json.xml
+G:/SkethItServer/SkethItServer/obj/Debug/SkethItServer.csprojResolveAssemblyReference.cache
+G:/SkethItServer/SkethItServer/obj/Debug/SkethItServer.exe
+G:/SkethItServer/SkethItServer/obj/Debug/SkethItServer.pdb

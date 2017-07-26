@@ -1,0 +1,21 @@
+<div class="notification-box">
+
+	{{#each notifications as |notification|}}
+		<div class="notification-live">
+
+			<div class="close"><i class="fa fa-close"></i></div>
+
+			<span class="title">{{notification.name}}</span><br>
+
+			<span class="description">{{notification.description}}</span><br>
+
+			<span class="time">{{notification.time}}</span>
+
+			<div class="buttons">
+				Click to join
+			</div>
+
+		</div>
+	{{/each}}
+
+</div>

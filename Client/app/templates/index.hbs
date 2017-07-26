@@ -1,0 +1,46 @@
+{{top-bar showTitle=false}}
+
+{{#animations/fade-slide}}
+	
+	<div class="login" align="center">
+
+		<span class="logo">Sketch<span>it</span></span><br>
+		<span class="subtitle">Login</span>
+
+		<div class="content">
+
+			{{! Login as guest button }}
+			<div 
+				class="guest" 
+				data-balloon="Login as guest&#10;(not avaiable)" 
+				data-balloon-pos="up" data-balloon-break
+			>
+				{{inputs/fa-button icon="fa-user-circle"}}
+			</div>
+
+			{{! Login form }}
+			<div class="form">
+
+				{{inputs/default-textbox placeholder="Username" currValue=model.username onEnter="login"}}
+
+				<br><br>
+				
+				{{inputs/default-textbox placeholder="Password" password=true currValue=model.password onEnter="login"}}
+
+				<br><br><br>
+
+				{{! Confirm login or register }}
+				{{inputs/default-button text="Register" action="register"}}
+				{{inputs/default-button text="Login" action="login"}}
+
+			</div>
+
+			{{! Error box message }}
+			<div class="error">
+				
+			</div>
+
+		</div>
+
+	</div>
+{{/animations/fade-slide}}

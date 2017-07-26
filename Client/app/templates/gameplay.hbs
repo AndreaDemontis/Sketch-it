@@ -1,0 +1,92 @@
+{{top-bar topbarBorder=true userLogged=true userPopup=model.userPopupState}}
+
+<div class="gameplay">
+
+	{{! Left layout column }}
+	<div class="left">
+
+		{{! Round and users }}
+		<div class="top">
+
+			{{! User list }}
+			<div class="users">
+				<table>
+
+					{{#each model.users as |user|}}	
+						<tr>
+
+							<th style="{{if user.current 'font-weight: bolder;' ''}}">{{{user.name}}}</th>
+							<th>{{user.score}}pt</th>
+							<th><i class="fa fa-pencil" style="color:{{if user.drawing '#444' '#DDD'}};" /></th>
+
+						</tr>
+					{{/each}}
+
+				</table>
+			</div>
+
+			{{! Round informations }}
+			<div class="round">
+
+				{{! Timer }}
+				<div class="timer">
+					{{charts/radial-chart proggress=model.timeLeft value=model.realTime}}
+					<div class="info">
+						<span class="roundNumber">Round {{model.currentRound}}/{{model.maxRound}}</span><br>
+						{{#if model.drawing}}
+							<span class="role">Now you are drawing</span>
+						{{else}}
+							{{#unless model.currentWord}}
+								<span class="role">Waiting...</span>
+							{{/unless}}
+						{{/if}}
+					</div>
+				</div>
+
+				{{! Current word }}
+				{{#if model.currentWord}}
+					<div class="word">
+						The current word is<br>
+						{{#if model.drawing}}
+							<class 
+								style="font-weight: normal;"
+								data-balloon="{{model.definition}}"
+								data-balloon-pos="down" data-balloon-break>
+									<i class="fa fa-info-circle"></i>
+							</class>
+						{{/if}}
+						<span class="word">{{model.currentWord}}</span>
+					</div>
+				{{/if}}
+
+			</div>
+
+		</div>
+
+		{{! Chat section }}
+		<div class="bottom">
+			<div class="chat">
+				{{chat-controller messages=model.messages action='sendMessage'}}
+			</div>
+		</div>
+
+	</div>
+
+	{{! Right layout column}}
+	<div class="right">
+
+		{{! Control buttons }}
+		{{inputs/default-confirm-button label="Away" icon="fa-clock-o" color="#383433" }}
+		{{inputs/default-confirm-button label="Hint" icon="fa-lightbulb-o" color="#E5B74B" }}
+		{{inputs/default-confirm-button label="Skip" icon="fa-fast-forward" action="endGame" color="#554D9E" }}
+		{{inputs/default-confirm-button label="Exit" icon="fa-sign-out" action="exit" color="#E24A4A" }}
+
+		{{! Draw area }}
+		{{draw-area enabled=model.drawing changed="drawChanged" externalImage=model.extImage}}
+	
+	</div>
+
+</div>
+
+{{user-profile visible=model.userPopupState}}
+{{game-result visible=model.endGamePopupState}}

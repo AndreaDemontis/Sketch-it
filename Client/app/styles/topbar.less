@@ -1,0 +1,209 @@
+.nonSelectable()
+{
+	// - Disable select on this element
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+
+	// - Normal cursor
+	cursor: default;
+}
+
+.topbar-border
+{
+	border-bottom: 3px solid #777;
+}
+
+.topbar
+{
+	// - Draggable area
+	-webkit-app-region: drag;
+
+	// - Layout
+	display: table;
+	width: 100%;
+	height: 40px;
+
+	// - Reset margins
+	margin: 0px;
+	padding: 0px;
+
+	background-color: transparent;
+
+	div
+	{
+		// - Row style
+		height: 100%;
+		display: table-row;
+
+		div
+		{
+			// - Column style
+			padding: 5px;
+		}
+	}
+
+	.left
+	{
+		// - Left part layout
+		display: table-cell;
+		text-align: left;
+		width: 33.3%;
+		vertical-align: middle;
+
+		font-size: 20px;
+		font-weight: 600;
+
+		fa-button
+		{
+			-webkit-app-region: no-drag;
+			
+			.FontAwesomeButton(25px, #999, #222, #555, #CCC, #222, 18px);
+		}
+
+		.user
+		{
+			vertical-align: -10%;
+		}
+	}
+
+	.center
+	{
+		// - Center part layout
+		display: table-cell;
+		text-align: center;
+		width: 33.3%;
+
+		vertical-align: bottom;
+
+		.nonSelectable();
+
+		.logo
+		{
+			color: #444;
+
+			font-weight: 600;
+			font-size: 28px;
+
+			span
+			{
+				color: #3ADBD3;
+			}
+		}
+	}
+
+	.right
+	{
+		// - Right part layout
+		display: table-cell;
+		text-align: right;
+		width: 33.3%;
+		vertical-align: middle;
+
+		// - Window button styles
+		fa-button
+		{
+			-webkit-app-region: no-drag;
+
+			.FontAwesomeButton(20px);
+		}
+
+		.close
+		{
+			.FontAwesomeButton(27px);
+		}
+
+		.logout
+		{
+			.FontAwesomeButton(25px);
+		}
+
+	}
+}
+
+.notification-box
+{
+	// - Size
+	width: 300px;
+	height: 400px !important;
+
+	// - Border
+	border-bottom-right-radius: 5px;
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+	border: #EEE solid 1px;
+
+	// - Background
+	background: #FFFFFF;
+
+	// - Positioning
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	z-index: 100;
+
+	overflow-y: auto;
+
+	.notification-live
+	{
+		height: 60px;
+		width: 285px;
+		display: block;
+		position: relative;
+
+		// - Box
+		background-color: #EEE;
+		border-radius: 5px !important;
+
+		// - Positioning
+		padding: 5px;
+		margin-bottom: 5px;
+
+		.close
+		{
+			float: right;
+
+			margin-left: -5px;
+			margin-top: -5px;
+
+			color: #AAA;
+		}
+
+		.title
+		{
+			font-size: 17px;
+		}
+
+		.description
+		{
+			font-size: 14px;
+			color: #666;
+			margin-left: 5px;
+		}
+
+		.time
+		{
+			font-size: 11px;
+			color: #AAA;
+			margin-left: 2px;
+		}
+
+		.buttons
+		{
+			float: right;
+			font-size: 12px;
+			height: 10px;
+
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+
+			background-color: #3ADBD3;
+			color: #FFF;
+			border-radius: 5px !important;
+
+			cursor: pointer;
+		}
+	}
+}
